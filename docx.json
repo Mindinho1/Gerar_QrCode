@@ -1,0 +1,2234 @@
+/**
+
+ * monografia_amancio.js
+
+ * UniAchados — CAPÍTULO I: INTRODUÇÃO
+
+ * Universidade Zambeze (FCT, Beira)
+
+ *
+
+ * Conteúdo estruturado em conformidade com:
+
+ *  - Normas UNIZA para Trabalhos de Culminação de Curso (Português Europeu, pré-AO90)
+
+ *  - APA 7.ª edição para citações
+
+ *
+
+ * Estrutura de cada secção:
+
+ *  { level: 1 | 2, number: "1.1.", title: "...", paragraphs: [ "...", "..." ] }
+
+ * Para listas (ex.: objectivos específicos), o campo `list` substitui `paragraphs`.
+
+ */
+
+
+
+const capituloI = {
+
+  chapter: "CAPÍTULO I: INTRODUÇÃO",
+
+  sections: [
+        {
+
+      level: 1,
+
+      number: "1.1.",
+
+      title: "Contextualização",
+
+      paragraphs: [
+                "O ambiente universitário caracteriza-se pela circulação diária de um grande número de pessoas em espaços partilhados, como salas de aula, bibliotecas, laboratórios, cantinas e áreas de convívio. Nesse contexto, a perda de objectos pessoais constitui um problema recorrente e transversal a praticamente todas as instituições de ensino superior, afectando estudantes, docentes e funcionários de forma frequente (Tan & Chong, 2023).",
+                "O avanço das tecnologias de informação e comunicação tem oferecido oportunidades relevantes para a modernização dos processos administrativos e de gestão nas instituições de ensino superior. A transformação digital das universidades, particularmente no continente africano, tem sido identificada na literatura como uma necessidade estratégica para melhorar a eficiência dos serviços prestados à comunidade académica (Zeleza & Okanda, 2021). Em Moçambique, esta tendência é reforçada por iniciativas governamentais como a Política para a Sociedade de Informação e o programa \u201CUm Computador por Estudante do Ensino Superior\u201D, que visam promover a inclusão digital no contexto do ensino superior (INTIC, 2024).",
+                "É neste enquadramento que se insere o presente trabalho, que propõe o desenvolvimento de um sistema web denominado UniAchados, destinado à gestão centralizada de objectos perdidos e achados na Universidade Zambeze. A plataforma pretende substituir os métodos informais actualmente utilizados por um processo digital, organizado e acessível, que facilite o registo, a pesquisa e a devolução de objectos, contribuindo para a melhoria da experiência da comunidade académica.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "1.2.",
+
+      title: "Problematização",
+
+      paragraphs: [
+                "Grande parte das dificuldades vividas no quotidiano universitário decorre da forma como a informação circula, ou deixa de circular, entre quem dela necessita. No caso dos objectos perdidos, esta lacuna traduz-se em avisos que não chegam a tempo, em pertences que mudam de mão sem qualquer registo e em estudantes que desistem de procurar por não saberem onde ou a quem recorrer.",
+                "É nesse cenário que se insere a Associação de Estudantes da Universidade Zambeze (AEUNIZA), o órgão oficial de representação estudantil da instituição. Dirigida por estudantes e para estudantes, a AEUNIZA funciona como a \u201Cvoz\u201D da comunidade académica perante a direcção da universidade e a sociedade, e a sua proximidade com a massa estudantil confere-lhe a legitimidade e o alcance necessários para intermediar soluções de apoio prático ao estudante, incluindo iniciativas de apoio social e de gestão do campus.",
+                "Contudo, a ausência de um mecanismo institucional ou de uma plataforma tecnológica dedicada limita severamente a actuação de órgãos como a AEUNIZA. A associação poderia desempenhar um papel relevante na custódia e na entrega de objectos achados no campus, minimizando o prejuízo financeiro e o transtorno causado aos estudantes. Contudo, carece de ferramentas adequadas para gerir este processo de forma transparente, célere e organizada, dependendo actualmente de métodos informais e descentralizados que resultam em baixas taxas de devolução.",
+                "Diante deste cenário de fragmentação da informação e da necessidade de optimizar a gestão de achados e perdidos na instituição, a questão central que orienta o presente trabalho é a seguinte: \u201CEm que medida um sistema web centralizado melhora as taxas de recuperação de objectos perdidos e a satisfação dos utilizadores na Universidade Zambeze?\u201D",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "1.3.",
+
+      title: "Justificativa",
+
+      paragraphs: [
+                "Experiências de outras instituições de ensino superior confirmam que a ausência de rastreabilidade e de verificação na entrega não constitui uma limitação exclusiva da Universidade Zambeze, e que soluções digitais semelhantes já demonstraram capacidade de mitigar estas falhas (Tan & Chong, 2023). O UniAchados justifica-se, assim, em três dimensões: operacionalmente, ao centralizar a informação de todas as faculdades e introduzir mecanismos de verificação inexistentes nos canais informais actualmente utilizados; institucionalmente, ao reflectir o compromisso da universidade com a modernização dos serviços e com soluções tecnológicas produzidas internamente pela Faculdade de Ciências e Tecnologia; e academicamente, ao permitir aplicar os conhecimentos da licenciatura num contexto real, com potencial de adopção efectiva.",
+                "O envolvimento da AEUNIZA como ponto de custódia e entrega confere ao sistema uma dimensão institucional e participativa, criando um canal formal de mediação entre quem perde e quem encontra um objecto.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "1.4.",
+
+      title: "Relevância",
+
+      paragraphs: [
+                "O presente projecto apresenta relevância em diversos domínios, os quais se descrevem nos pontos seguintes.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "1.4.1.",
+
+      title: "Relevância social",
+
+      paragraphs: [
+                "O sistema UniAchados contribui para a melhoria da convivência e da confiança entre os membros da comunidade académica da Universidade Zambeze. Ao proporcionar um canal formal, transparente e acessível para o registo e a recuperação de objectos perdidos, a plataforma promove valores de honestidade, solidariedade e responsabilidade colectiva. A devolução organizada e verificável de bens aos seus legítimos proprietários fortalece o sentido de pertença à comunidade universitária e reduz os inconvenientes e os custos pessoais associados à perda de objectos.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "1.4.2.",
+
+      title: "Relevância científica",
+
+      paragraphs: [
+                "Do ponto de vista científico, o trabalho contribui para o corpo de conhecimento sobre o desenvolvimento de sistemas de informação aplicados à gestão de serviços universitários no contexto moçambicano. O projecto permite explorar, documentar e validar soluções tecnológicas adaptadas às condições específicas de uma universidade pública, servindo como referência para investigações futuras na área de Engenharia Informática e Sistemas de Informação.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "1.5.",
+
+      title: "Objectivos",
+
+      paragraphs: [],
+        },
+        {
+
+      level: 2,
+
+      number: "1.5.1.",
+
+      title: "Objectivo geral",
+
+      paragraphs: [
+                "Desenvolver o UniAchados, uma plataforma digital para a gestão de objectos perdidos e achados no âmbito da comunidade universitária, capaz de facilitar o registo, a pesquisa e a reclamação de itens de forma rápida e segura.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "1.5.2.",
+
+      title: "Objectivos específicos",
+
+      list: [
+                "Identificar as principais dificuldades enfrentadas pela comunidade académica na procura e recuperação de objectos perdidos e achados;",
+                "Estruturar uma base de dados centralizada com o registo dos objectos reportados como perdidos ou encontrados;",
+                "Identificar os requisitos e as funcionalidades essenciais para o desenvolvimento da plataforma, adaptados ao contexto da universidade;",
+                "Desenvolver a plataforma, de modo a permitir o registo, a pesquisa, a notificação e a reclamação de objectos perdidos e achados.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "1.6.",
+
+      title: "Hipótese",
+
+      paragraphs: [
+                "A implementação de um sistema web para a gestão centralizada de objectos perdidos e achados na Universidade Zambeze aumentará a taxa de recuperação de objectos e a satisfação da comunidade académica, comparativamente aos métodos informais actualmente utilizados.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "1.7.",
+
+      title: "Delimitação",
+
+      paragraphs: [],
+        },
+        {
+
+      level: 2,
+
+      number: "1.7.1.",
+
+      title: "Delimitação temática",
+
+      paragraphs: [
+                "Este trabalho desenvolve um sistema web de gestão de perdidos e achados universitário, com registo por intermédio da AEUNIZA, comunicação de perdas, pesquisa, verificação de propriedade, confirmação de entrega, reconhecimento de imagens e de ficheiros (PDF/Excel) para a criação automática de utilizadores, e painel administrativo. Ficam fora do âmbito do trabalho os pagamentos electrónicos, a videovigilância e as aplicações móveis nativas.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "1.7.2.",
+
+      title: "Delimitação espacial",
+
+      paragraphs: [
+                "O trabalho está circunscrito à Universidade Zambeze \u2013 Beira (Matacuane), composta por três faculdades: a Faculdade de Ciências e Tecnologia (FCT), a Faculdade de Direito (FD) e a Faculdade de Ciências Sociais e Humanas (FCSH). A fase de desenvolvimento e validação incide sobre o contexto da Universidade Zambeze \u2013 Beira.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "1.8.",
+
+      title: "Estrutura do trabalho",
+
+      paragraphs: [
+                "O presente trabalho está dividido em cinco capítulos. O Capítulo I apresenta a introdução, onde se definem a problematização, a justificativa, a hipótese, a delimitação do tema, a relevância e os objectivos do trabalho. O Capítulo II corresponde à revisão da literatura, abordando os conceitos relacionados com sistemas de gestão de objectos perdidos e achados e com sistemas de informação, bem como a evolução dos processos de gestão de perdidos e achados e os elementos-chave para a implementação deste tipo de sistema em contexto universitário. O Capítulo III trata das técnicas utilizadas para a recolha e a análise de dados. O Capítulo IV apresenta uma descrição detalhada do sistema, incluindo a análise dos requisitos, a arquitectura e o funcionamento do UniAchados. O Capítulo V apresenta as considerações finais do trabalho e as recomendações, seguindo-se as referências bibliográficas, o orçamento, os apêndices e os anexos.",
+            ],
+        },
+    ],
+
+  references: [
+        {
+
+      note: "INTIC (2024) — programa \u201CUm Computador por Estudante do Ensino Superior\u201D confirmado como real; falta confirmar o registo exacto (título, data, tipo de publicação) da fonte de 2024 antes de a incluir na lista de referências bibliográficas final.",
+        },
+    ],
+};
+
+
+
+/**
+
+ * CAPÍTULO II: REVISÃO DA LITERATURA
+
+ *
+
+ * Revisto a partir do rascunho fornecido: terminologia unificada em Português
+
+ * Europeu pré-AO90 (ex.: "objecto" em vez de "objeto", "utilizador" em vez de
+
+ * "usuário", "controlo" em vez de "controle", "optimizar" em vez de "otimizar",
+
+ * "recolher" em vez de "coletar", "ficheiro" em vez de "arquivo" no sentido
+
+ * informático, "palavra-passe" em vez de "senha", "telemóvel" em vez de
+
+ * "celular", "descarregar" em vez de "baixar"), numeração de subsecções
+
+ * corrigida (existiam dois "2.6.1."), e redacção de algumas frases e da
+
+ * Tabela 2 clarificada sem alterar o sentido original.
+
+ *
+
+ * Onde o rascunho referia uma figura, mantém-se o número/título/fonte e
+
+ * acrescenta-se `placeholder`, um espaço a dizer o que deves inserir — as
+
+ * imagens em si (ficheiros gráficos) não fazem parte deste módulo de dados.
+
+ */
+
+const capituloII = {
+
+  chapter: "CAPÍTULO II: REVISÃO DA LITERATURA",
+
+  sections: [
+        {
+
+      level: 1,
+
+      number: "2.1.",
+
+      title: "Definição de Sistema de Informação (SI)",
+
+      paragraphs: [
+                "Segundo Laudon e Laudon (2014, p. 13), um sistema de informação pode ser definido como um conjunto de componentes inter-relacionados que recolhem (ou recuperam), processam, armazenam e distribuem informação destinada a apoiar a tomada de decisões, a coordenação e o controlo numa organização.",
+                "De acordo com O'Brien (2004, p. 6), um sistema de informação é um conjunto organizado de pessoas, hardware, software, redes de comunicação e recursos de dados que recolhe, transforma e dissemina informação numa organização.",
+                "Para que um sistema de informação seja eficiente, é necessário que saiba trabalhar com quatro graus distintos de \u201Cmatéria-prima\u201D, hierarquicamente relacionados entre si: o dado, a informação, o conhecimento e a competência ou inteligência.",
+            ],
+
+      definitionList: [
+                { term: "Dado", definition: "sequência de símbolos quantificados ou quantificáveis, puramente sintáctica e sem relação directa com significado; são factos e números soltos, sem contexto."
+                },
+                { term: "Informação", definition: "abstracção informal que representa algo significativo para uma pessoa por meio de textos, imagens ou sons; depende da interpretação de quem a recebe, sendo de natureza subjectiva, ou seja, são dados organizados e com um significado claro."
+                },
+                { term: "Conhecimento", definition: "abstracção interior e pessoal de algo vivenciado, construída a partir da experiência e da reflexão sobre a informação; não pode ser directamente transmitido, apenas estimulado — é a aplicação prática da informação para resolver problemas e tomar decisões."
+                },
+                { term: "Competência/inteligência", definition: "capacidade de produzir uma acção, decisão ou opinião de forma eficiente, resultante da aplicação prática do conhecimento adquirido; é o nível mais alto desta hierarquia, entendido como o conhecimento contextualmente relevante que permite agir com vantagem no ambiente considerado."
+                },
+            ],
+
+      figure: {
+
+        number: "Figura 1",
+
+        title: "Dados, informação, conhecimento e inteligência",
+
+        source: "Liliana Soares (2012)",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui o diagrama piramidal Dado \u2192 Informação \u2192 Conhecimento \u2192 Competência/Inteligência, conforme Liliana Soares (2012). Confirmar a fonte original antes de a reproduzir.]",
+            },
+        },
+        {
+
+      level: 1,
+
+      number: "2.2.",
+
+      title: "Componentes de um Sistema de Informação",
+
+      paragraphs: [
+                "Os componentes de um sistema de informação vão muito além de computadores e programas: representam uma combinação de recursos que trabalham em conjunto para recolher, processar, armazenar e distribuir informação.",
+                "Segundo O'Brien (2004), um sistema de informação é composto por cinco recursos básicos, que se inter-relacionam para viabilizar o processamento de dados em informação útil:",
+            ],
+
+      list: [
+                "Recursos humanos: utilizadores finais (quem usa o sistema) e especialistas em sistemas de informação (quem o desenvolve e mantém). São as pessoas que projectam, operam, mantêm e utilizam o sistema, constituindo o componente mais crítico, pois sem o elemento humano a tecnologia não tem propósito.",
+                "Recursos de hardware: dispositivos físicos e equipamentos usados no processamento da informação, como máquinas (computadores, servidores, impressoras) e suportes (discos, pen drives, formulários em papel), ou seja, toda a parte física e tangível utilizada para processar e armazenar os dados.",
+                "Recursos de software: programas (instruções que fazem o computador executar tarefas) e procedimentos (instruções operacionais para os utilizadores). Os programas indicam ao hardware o que fazer; os procedimentos são as regras operacionais, manuais e políticas que orientam as pessoas sobre como usar o sistema correctamente.",
+                "Recursos de dados: organizados em bases de dados (dados estruturados) e bases de conhecimento (factos, regras e exemplos sobre práticas de negócio). São a matéria-prima do sistema: os dados brutos são recolhidos, organizados, armazenados e processados para serem transformados em informação útil.",
+                "Recursos de rede: suportes de comunicação (cabos, fibra óptica, satélite) e o apoio necessário (pessoas, hardware, software) para operar a rede. É a infra-estrutura que liga os hardwares e softwares, permitindo que os diferentes componentes comuniquem e partilhem recursos e informação, local ou globalmente.",
+            ],
+
+      figure: {
+
+        number: "Figura 2",
+
+        title: "Componentes de um Sistema de Informação",
+
+        source: "Adaptado de O'Brien (2004)",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui o esquema dos cinco recursos do SI (humanos, hardware, software, dados, rede), adaptado de O'Brien (2004).]",
+            },
+        },
+        {
+
+      level: 1,
+
+      number: "2.3.",
+
+      title: "Tipos de Sistemas de Informação",
+
+      paragraphs: [],
+        },
+        {
+
+      level: 2,
+
+      number: "2.3.1.",
+
+      title: "Sistemas de Informação de Gestão (SIG)",
+
+      paragraphs: [
+                "Segundo Oliveira (1992, p. 39), o Sistema de Informação de Gestão (SIG) é o processo de transformação de dados em informação utilizada na estrutura decisória da empresa, proporcionando a sustentação administrativa para optimizar os resultados esperados.",
+                "Nash e Roberts (1984, como citados em Oliveira, 2002, p. 40) definem o SIG como uma combinação de pessoas, instalações, tecnologias, procedimentos e controlos, cujo objectivo é manter os canais de comunicação e apoiar a tomada de decisões inteligentes na organização.",
+                "Já sob a óptica da eficiência operacional, Stair e Reynolds (2002) sublinham que o foco principal de um SIG é precisamente essa eficiência dentro dos processos organizacionais.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "2.3.2.",
+
+      title: "Sistemas Web (aplicações baseadas em navegador)",
+
+      paragraphs: [
+                "Segundo Pressman (2006), uma aplicação Web pode variar de uma simples página a um sítio completo, sendo esta considerada a definição mais abrangente encontrada na literatura. Esta definição engloba termos equivalentes também usados na área, como \u201Csistemas baseados em Web\u201D (Web-based systems) e \u201Csistemas Web\u201D (Web systems).",
+                "Complementando esta visão, Paula Filho (2003) define aplicações Web como produtos de software ou sistemas informáticos que utilizam uma arquitectura distribuída, funcionando pelo menos parcialmente sob o protocolo HTTP.",
+                "Do ponto de vista das suas características técnicas, os sistemas Web (ou WebApps) possuem particularidades intrínsecas ao ambiente em que operam, como a concorrência de acessos, a carga imprevisível, a alta disponibilidade, a sensibilidade ao conteúdo, a evolução dinâmica constante, o imediatismo e os requisitos de segurança e estética, o que exige uma abordagem de desenvolvimento diferenciada da Engenharia de Software tradicional (Pressman, 2005).",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "2.4.",
+
+      title: "Ciclo de vida de desenvolvimento de sistemas (SDLC)",
+
+      paragraphs: [
+                "O Ciclo de Vida de Desenvolvimento de Sistemas (SDLC — Systems Development Life Cycle) é um modelo estruturado e lógico, utilizado pela engenharia de software e pela gestão de TI, para planear, criar, testar, implementar e manter um sistema de informação.",
+                "O objectivo do SDLC é garantir que o sistema entregue atende aos requisitos dos utilizadores, é concluído dentro do prazo e do orçamento previstos, e possui elevada qualidade e fiabilidade.",
+            ],
+
+      list: [
+                "Planeamento e investigação preliminar: determina a viabilidade do projecto. Avalia-se o problema a resolver, os custos estimados, os benefícios esperados e os riscos. O principal entregável é o Estudo de Viabilidade.",
+                "Análise de requisitos: compreende em profundidade o que o sistema deve fazer. Os analistas entrevistam utilizadores, mapeiam processos de negócio e documentam todas as funcionalidades necessárias. O entregável é o Documento de Especificação de Requisitos.",
+                "Design/projecto do sistema: traduz os requisitos em especificações técnicas. Desenham-se a arquitectura do software, as interfaces de ecrã, os diagramas de fluxo de dados e a estrutura da base de dados (modelação de tabelas).",
+                "Desenvolvimento e codificação: fase de construção propriamente dita. Os programadores escrevem o código-fonte do sistema com base nas especificações de design definidas na fase anterior, utilizando as linguagens de programação escolhidas.",
+                "Implementação e manutenção: o sistema é colocado em produção (disponibilizado aos utilizadores finais). A partir daí, entra na fase de manutenção contínua, que envolve a correcção de novos erros detectados, actualizações de segurança e melhorias.",
+            ],
+
+      figure: {
+
+        number: "Figura 3",
+
+        title: "Ciclo de vida de desenvolvimento de sistemas (SDLC)",
+
+        source: "Roberto Gil Espinha (2024)",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui o esquema das cinco fases do SDLC (Planeamento, Análise, Design, Desenvolvimento, Implementação/Manutenção), conforme Roberto Gil Espinha (2024).]",
+            },
+        },
+        {
+
+      level: 1,
+
+      number: "2.5.",
+
+      title: "Segurança e Qualidade da Informação",
+
+      paragraphs: [
+                "A segurança da informação pode ser definida como o conjunto de práticas voltadas para a protecção da informação contra acessos não autorizados, interrupções indevidas ou modificações não autorizadas, sendo sustentada por três princípios fundamentais, conhecidos como Tríade CIA (do inglês Confidentiality, Integrity and Availability) (Whitman & Mattord, 2018).",
+                "Segundo Whitman e Mattord (2018), a Tríade CIA constitui o pilar central da segurança da informação, contemplando a necessidade de proteger a informação contra acesso não autorizado (confidencialidade), garantir a exactidão dos dados (integridade) e assegurar a disponibilidade dos dados quando necessários.",
+            ],
+
+      table: {
+
+        number: "Tabela 1",
+
+        title: "Políticas de segurança (Tríade CIA)",
+
+        columns: [
+                    "Princípio",
+                    "Descrição",
+                    "Exemplo prático"
+                ],
+
+        rows: [
+                    [
+                        "Confidencialidade",
+                        "Garante que a informação seja acessível apenas a pessoas explicitamente autorizadas, evitando a fuga ou a exposição de dados sensíveis a terceiros.",
+                        "Cifragem de dados em trânsito e em repouso; controlo estrito de permissões de pastas."
+                    ],
+                    [
+                        "Integridade",
+                        "Garante que a informação se mantenha no seu estado original, livre de modificações, corrupções ou eliminações não autorizadas ou acidentais ao longo do seu ciclo de vida.",
+                        "Uso de funções de hash (como SHA-256) para verificar se um ficheiro foi alterado; registos de auditoria de alterações."
+                    ],
+                    [
+                        "Disponibilidade",
+                        "Garante que a informação e os sistemas estejam acessíveis aos utilizadores autorizados sempre que necessário.",
+                        "Servidores redundantes, planos de salvaguarda (backup) actualizados e mitigação de ataques de negação de serviço (DDoS)."
+                    ],
+                ],
+
+        source: "Whitman e Mattord (2018)",
+            },
+
+      trailingParagraphs: [
+                "A autenticação é o processo pelo qual um sistema verifica a identidade de um utilizador, dispositivo ou entidade antes de conceder acesso a recursos protegidos, geralmente por meio de credenciais como palavras-passe, biometria, tokens ou certificados digitais. Já o controlo de acesso refere-se ao conjunto de mecanismos que determinam quem pode aceder a determinado recurso e que tipo de operação pode realizar sobre ele (leitura, escrita, execução), sendo um complemento essencial da confidencialidade e da integridade dentro da Tríade CIA (Whitman & Mattord, 2018).",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "2.6.",
+
+      title: "Sistemas de Informação aplicados à Gestão de Achados e Perdidos",
+
+      paragraphs: [
+                "Aplicar sistemas de informação à gestão de achados e perdidos transforma um processo historicamente manual e ineficiente (baseado em livros de registo em papel ou folhas de cálculo isoladas) num fluxo digital integrado. O objectivo central destes sistemas é aumentar a taxa de devolução de itens por meio do cruzamento inteligente de dados e da facilitação do contacto com o cidadão.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "2.6.1.",
+
+      title: "Definição de termos e regras de negócio: objectos, objectos perdidos e objectos achados",
+
+      paragraphs: [
+                "Para a modelação e o correcto funcionamento do sistema UniAchados, é necessário conceptualizar e diferenciar os estados e categorias dos objectos transaccionados na plataforma, articulando a literatura sobre gestão de bens com o contexto da Universidade Zambeze.",
+            ],
+
+      definitionList: [
+                { term: "Objectos", definition: "segundo o Dicionário Priberam da Língua Portuguesa, objecto é tudo o que é exterior ao espírito, ou seja, uma coisa, um assunto, uma matéria, uma causa ou um motivo. Em sentido mais restrito, trata-se de uma coisa material que pode ser percebida pelos sentidos — visão, audição, tacto, olfacto ou paladar —, como é o caso dos artigos pessoais geridos no âmbito de um sistema de achados e perdidos (telemóveis, carteiras, chaves, cartões de identificação, entre outros)."
+                },
+                { term: "Objectos perdidos", definition: "do ponto de vista jurídico, o conceito de objecto perdido decorre da noção civilista de \u201Ccoisa perdida\u201D. Segundo Gonçalves (2017), a descoberta consiste no achado de coisa alheia que foi perdida pelo seu dono, cabendo a quem a encontra o dever de a restituir ao legítimo proprietário. No contexto de sistemas de gestão de achados e perdidos em ambientes institucionais, Tan e Chong (2023) descrevem os objectos perdidos como itens extraviados com elevada frequência em ambientes de grande circulação de pessoas, como universidades, aeroportos e centros comerciais, nomeadamente telemóveis, carteiras, chaves, cartões de identificação, computadores portáteis, livros e malas."
+                },
+                { term: "Objectos achados", definition: "segundo Gonçalves (2017), quem quer que ache coisa alheia perdida tem a obrigação de a restituir ao dono ou ao legítimo possuidor, entregando-a à autoridade competente caso este não seja identificado — é este o fundamento jurídico do que se designa por \u201Cobjecto achado\u201D. Numa perspectiva mais conceptual, a Revista Interact reforça que um objecto achado é necessariamente um objecto perdido, uma vez que a condição de \u201Cachado\u201D pressupõe sempre um processo prévio de perda e de desligamento do objecto do seu proprietário de origem. No plano aplicado dos sistemas de informação, Tan e Chong (2023) tratam o objecto achado como o registo de um item recuperado, armazenado e disponibilizado para reclamação através de um sistema de gestão centralizado."
+                },
+            ],
+
+      trailingParagraphs: [
+                "No sistema UniAchados, os objectos achados correspondem aos bens sob custódia formal da Associação de Estudantes (AEUNIZA). Estes itens são catalogados e publicados na plataforma por um operador responsável, com dados estruturados (fotografia, categoria, local e data em que foram achados) e perguntas de verificação confidenciais, permitindo a consulta pública e a reclamação segura por parte do legítimo proprietário.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "2.6.2.",
+
+      title: "Revisão de sistemas semelhantes existentes",
+
+      paragraphs: [],
+
+      list: [
+                "Caso regional (África lusófona) — FIND (Angola/Moçambique/Brasil): plataforma online criada com o propósito de ajudar a devolver bens perdidos aos seus donos e a reencontrar pessoas desaparecidas, com presença em Angola, no Brasil e em Moçambique. O funcionamento é simples e acessível através de aplicação móvel: o utilizador que perdeu um item selecciona \u201Cperdi\u201D, enquanto quem encontra um objecto selecciona \u201Cachei\u201D, sendo apenas necessário descarregar a aplicação para reportar a ocorrência. Um diferencial relevante do projecto é a proposta de valor económico e social: segundo o CEO da startup, o objectivo é ajudar o Estado e o cidadão a poupar os custos associados à emissão de documentos, uma vez que, se os documentos perdidos estiverem registados na plataforma, o cidadão pode recuperá-los sem necessidade de solicitar uma segunda via. Até à data da reportagem consultada, a plataforma já tinha registado mais de 2.300 ocorrências de documentos encontrados.",
+                "Caso de referência legal/administrativa — Sistema Integrado de Informação sobre Perdidos e Achados (SIISPA), Portugal: como Moçambique partilha heranças jurídico-administrativas com Portugal, é relevante citar o modelo português, que institucionalizou por via legal um sistema centralizado de gestão de achados e perdidos. O Ministério da Administração Interna português criou o SIISPA, cuja missão consiste em facilitar o acesso e a comunicação dos cidadãos à PSP e à GNR por meio de tecnologias de informação, mantendo em funcionamento permanente um sistema online de registo de objectos perdidos e achados entregues às forças de segurança. O sistema permite ainda a subscrição de notificações por correio electrónico sobre resultados de pesquisas e disponibiliza uma área privada para o cidadão acompanhar o estado das suas solicitações.",
+                "Caso complementar (Brasil) — Sistema de Achados e Perdidos (SAP), Unicamp: implementado em 2014 pela Prefeitura do Campus da Unicamp (Barão de Geraldo), o SAP permite que a Vigilância do Campus registe os itens recebidos, gerando um número de identificação disponível para consulta pública através do sítio da Prefeitura ou da aplicação Unicamp Serviços. Os achados e perdidos encontrados no campus são entregues à Vigilância, que efectua o registo no sistema; um número é então gerado e disponibilizado para consulta pública. O sistema automatiza ainda a destinação dos itens não levantados após o prazo definido em norma institucional, verificando as datas de vencimento e facilitando a saída dos itens por lotes. Como resultado, o índice de devolução foi de 25,4% no ano de implementação (2014), subindo para 26,6% no ano seguinte, evidenciando ganhos de agilidade e transparência no processo.",
+            ],
+
+      trailingParagraphs: [
+                "Com base nos casos analisados, destacam-se as seguintes boas práticas recorrentes na literatura e em implementações reais:",
+            ],
+
+      numberedList: [
+                "Centralização dos dados numa plataforma única, eliminando a dispersão da informação entre esquadras, transportadoras e instituições isoladas (modelo SIISPA, Portugal).",
+                "Aplicação móvel/web de fácil utilização, com fluxo simplificado do tipo \u201Cperdi/achei\u201D, reduzindo a barreira de adesão do cidadão comum (modelo FIND, Angola/Moçambique).",
+                "Geração de identificador único e pesquisa por atributos (tipo de item, descrição, data, localidade), como no portal português.",
+                "Área pública de consulta sem necessidade de autenticação, e área privada autenticada para gestão e acompanhamento de casos.",
+                "Regras claras de prazo e destinação dos bens não reclamados (por exemplo, leilão ou entrega a entidades emissoras), inspiradas no artigo 1323.º do Código Civil português, que também influencia a legislação moçambicana por herança do direito civil lusófono.",
+                "Redução de custos institucionais, evitando processos de reemissão de documentos (argumento central do modelo FIND).",
+                "Baixo custo tecnológico (soluções de código aberto e aplicações móveis leves), factor especialmente relevante no contexto da infra-estrutura moçambicana.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "2.7.",
+
+      title: "Comparação entre métodos tradicionais de gestão e o sistema UniAchados",
+
+      paragraphs: [],
+
+      table: {
+
+        number: "Tabela 2",
+
+        title: "Comparação entre o processo tradicional de gestão de objectos perdidos e achados e o sistema UniAchados",
+
+        columns: [
+                    "Característica",
+                    "Processo tradicional",
+                    "Sistema UniAchados"
+                ],
+
+        rows: [
+                    [
+                        "Registo de objectos",
+                        "Manuscrito em cadernos ou folhas avulsas, sem padronização.",
+                        "Digital, com formulário estruturado, incluindo descrição, local, data e fotografia."
+                    ],
+                    [
+                        "Localização e centralização da informação",
+                        "Fragmentada entre diferentes pontos de recolha; é necessário deslocar-se pessoalmente a cada local para obter informação.",
+                        "Pesquisa digital com filtros por categoria, local, data e palavras-chave."
+                    ],
+                    [
+                        "Correspondência entre perdidos e achados",
+                        "Dependente do acaso ou da iniciativa individual.",
+                        "Sugestão automática de correspondências, com notificação aos utilizadores."
+                    ],
+                    [
+                        "Comunicação entre as partes",
+                        "Informal, através de redes sociais ou contacto presencial, com exposição de dados pessoais.",
+                        "Centralizada na AEUNIZA, sem contacto directo entre as partes nem exposição de dados pessoais."
+                    ],
+                    [
+                        "Verificação de propriedade",
+                        "Inexistente ou baseada apenas na palavra do reclamante.",
+                        "Perguntas de verificação sobre características não divulgadas, avaliadas pela AEUNIZA."
+                    ],
+                    [
+                        "Processo de entrega",
+                        "Sem documentação formal, sujeito a entregas não verificadas.",
+                        "Controlado por código QR, com registo automático dos dados do levantamento (identidade da pessoa e item levantado)."
+                    ],
+                    [
+                        "Rastreabilidade",
+                        "Sem registo da cadeia de custódia.",
+                        "Cadeia de custódia completa e verificável, desde o achado até ao levantamento."
+                    ],
+                    [
+                        "Custódia dos objectos",
+                        "Dispersa entre balcões, gabinetes de segurança e/ou serviços administrativos.",
+                        "Centralizada na AEUNIZA como ponto único de custódia."
+                    ],
+                    [
+                        "Gestão de objectos não reclamados",
+                        "Sem política definida; os objectos acumulam-se indefinidamente.",
+                        "Prazo de retenção definido, com marcação automática para descarte ou doação ao fim de 90 dias."
+                    ],
+                    [
+                        "Acessibilidade",
+                        "Limitada ao horário e à localização dos pontos de recolha.",
+                        "Disponível a qualquer momento, a partir de qualquer dispositivo com acesso à Internet."
+                    ],
+                ],
+
+        source: "O autor (2026)",
+            },
+        },
+        {
+
+      level: 1,
+
+      number: "2.8.",
+
+      title: "Código de Resposta Rápida (QR code)",
+
+      paragraphs: [
+                "O Código de Resposta Rápida, comummente designado por QR Code (do inglês Quick Response Code), é um tipo de código de barras bidimensional capaz de armazenar informação em formato legível por máquina. Desenvolvido em 1994 pela empresa japonesa Denso Wave, o QR Code foi originalmente concebido para facilitar o rastreio de peças na indústria automóvel, mas a sua utilização expandiu-se rapidamente para os mais diversos sectores, abrangendo actualmente áreas como o comércio, a saúde, a educação, a logística e os serviços financeiros (Kieseberg et al., 2010).",
+                "Ao contrário dos códigos de barras lineares tradicionais, que armazenam informação apenas numa dimensão horizontal, o QR Code organiza os dados numa matriz bidimensional composta por módulos quadrados dispostos sobre um fundo branco. Esta estrutura permite que o QR Code armazene uma quantidade de informação significativamente superior à dos códigos de barras convencionais, podendo conter dados numéricos, alfanuméricos, binários ou até caracteres especiais.",
+                "De acordo com a norma internacional ISO/IEC 18004 (2015), que regula a simbologia dos QR Codes, um único código pode armazenar até 7089 caracteres numéricos ou 4296 caracteres alfanuméricos, dependendo da versão e do nível de correcção de erros utilizado.",
+                "No âmbito do sistema UniAchados, o QR Code desempenha uma função central no processo de devolução de objectos. Quando a AEUNIZA aprova uma reclamação de propriedade, o sistema gera automaticamente um código QR único associado a essa transacção específica.",
+                "Este código contém informação codificada que identifica o objecto, o reclamante e a reclamação aprovada. O reclamante apresenta o código QR ao operador da AEUNIZA no momento do levantamento, e o operador efectua a leitura do código através da plataforma, confirmando a entrega e registando automaticamente os dados da devolução, incluindo a identidade do reclamante, a data e a hora.",
+                "Este mecanismo substitui os métodos informais de confirmação de entrega por um processo digital, verificável e rastreável, assegurando a integridade da cadeia de custódia desde o registo do objecto até à sua devolução ao legítimo proprietário.",
+            ],
+
+      figure: {
+
+        number: "Figura 4",
+
+        title: "QR Code",
+
+        source: "Hayes (2021)",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui um exemplo ilustrativo de um código QR, conforme Hayes (2021).]",
+            },
+        },
+        {
+
+      level: 2,
+
+      number: "2.8.1.",
+
+      title: "Tipos de QR Code",
+
+      paragraphs: [
+                "Os QR Codes podem ser classificados segundo o comportamento do conteúdo codificado. Esta classificação distingue dois tipos fundamentais — os QR Codes estáticos e os QR Codes dinâmicos —, que diferem na forma como a informação é armazenada e gerida após a geração do código.",
+            ],
+
+      list: [
+                "QR Code estático: armazena a informação directamente na estrutura do código, de forma permanente e imutável. Toda a informação (um endereço web, um texto, dados de contacto ou qualquer outro conteúdo) é codificada nos módulos do código no momento da sua geração. Não depende de servidores externos nem de ligação à Internet para a descodificação do conteúdo, o que o torna funcional mesmo em ambientes sem conectividade. Em contrapartida, não permite rastrear a utilização — não é possível saber quantas vezes o código foi lido, quando ou por quem (Shin et al., 2012).",
+                "QR Code dinâmico: ao contrário do estático, não armazena directamente o conteúdo final na estrutura do código; em vez disso, codifica um endereço de redireccionamento (geralmente um URL curto) que aponta para um servidor onde a informação efectiva está alojada. A principal limitação reside na dependência de um servidor externo e de conectividade à Internet: se o servidor estiver indisponível ou se o utilizador não tiver acesso à Internet no momento da leitura, o conteúdo não poderá ser acedido (Shin et al., 2012).",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "2.9.",
+
+      title: "Aplicação do QR Code no sistema UniAchados",
+
+      paragraphs: [
+                "Para o sistema UniAchados, optou-se pela utilização de QR Codes estáticos, gerados dinamicamente pelo sistema para cada reclamação aprovada. A escolha do formato estático justifica-se por três razões fundamentais.",
+            ],
+
+      numberedList: [
+                "A informação associada a cada transacção de levantamento é fixa e não necessita de actualização após a geração do código: o objecto, o reclamante e a reclamação aprovada são dados imutáveis naquele contexto.",
+                "Os QR Codes estáticos não dependem de servidores de redireccionamento externos, o que garante que o código pode ser validado pelo sistema mesmo em condições de conectividade limitada.",
+                "A imutabilidade do código estático reforça a segurança do processo, uma vez que o conteúdo não pode ser alterado ou manipulado após a geração, impedindo tentativas de adulteração.",
+            ],
+
+      trailingParagraphs: [
+                "Cada código QR gerado pelo UniAchados é único e válido para um único levantamento. Uma vez confirmada a entrega do objecto através da leitura do código pelo operador da AEUNIZA, o sistema regista o código como utilizado, impedindo a sua reutilização. Esta abordagem garante a unicidade de cada operação de devolução e assegura que cada objecto é entregue apenas uma vez, à pessoa cuja reclamação foi aprovada, mantendo a rastreabilidade completa do processo.",
+            ],
+        },
+    ],
+
+  references: [
+        {
+
+      note: "Confirmar as referências completas (editora, edição, DOI/URL quando aplicável) de: Laudon & Laudon (2014); O'Brien (2004); Oliveira (1992/2002); Nash & Roberts (1984, como citados em Oliveira); Stair & Reynolds (2002); Pressman (2005/2006); Paula Filho (2003); Whitman & Mattord (2018); Gonçalves (2017); Kieseberg et al. (2010); ISO/IEC 18004 (2015); Shin et al. (2012); Liliana Soares (2012); Roberto Gil Espinha (2024); Hayes (2021); e a reportagem sobre a FIND, antes de as incluir na lista final de referências bibliográficas — nenhuma foi inventada, mas os dados completos de publicação não constavam do rascunho original.",
+        },
+    ],
+};
+
+
+
+/**
+
+ * CAPÍTULO III: METODOLOGIA
+
+ *
+
+ * Revisto a partir do rascunho fornecido (documento + secção 3.4 colada na
+
+ * mensagem): terminologia unificada em Português Europeu pré-AO90 (ex.:
+
+ * "coleta"→"recolha", "perceções"→"percepções", "adotada"→"adoptada",
+
+ * "projeto"→"projecto", "objetos"→"objectos", "cadastro"→"registo").
+
+ * Variei ligeiramente algumas aberturas de frase que repetiam sempre
+
+ * "Segundo Gil (2008)" nas subsecções 3.1.x, para evitar repetição
+
+ * mecânica sem alterar a atribuição nem o conteúdo citado.
+
+ * Este capítulo não continha referências a figuras/imagens no rascunho;
+
+ * por isso não foram criados placeholders — mantém-se a convenção de que,
+
+ * assim que surgir uma figura (ex.: diagrama dos Sprints), esta deve
+
+ * seguir o mesmo padrão `figure: { number, title, source, placeholder }`
+
+ * já usado nos Capítulos I e II.
+
+ */
+
+const capituloIII = {
+
+  chapter: "CAPÍTULO III: METODOLOGIA",
+
+  intro: [
+        "O presente capítulo tem como objectivo apresentar os procedimentos metodológicos adoptados para o desenvolvimento deste trabalho, descrevendo o tipo de pesquisa, os métodos e técnicas utilizados na recolha e análise de dados, bem como os instrumentos e as etapas seguidas para a concepção do sistema de informação proposto para a gestão de objectos perdidos e achados.",
+    ],
+
+  sections: [
+        { level: 1, number: "3.1.", title: "Tipo de pesquisa", paragraphs: []
+        },
+        {
+
+      level: 2,
+
+      number: "3.1.1.",
+
+      title: "Quanto aos procedimentos",
+
+      paragraphs: [
+                "A presente pesquisa configura-se como um estudo de caso, na medida em que se debruça sobre uma realidade institucional específica e delimitada, a Universidade Zambeze, Campus de Matacuane, com vista a compreender em profundidade o problema da gestão de objectos perdidos e achados e a propor uma solução adaptada ao seu contexto particular.",
+                "Segundo Gil (2008), o estudo de caso consiste no estudo profundo e exaustivo de um ou poucos objectos, de maneira a permitir o seu conhecimento amplo e detalhado, sendo especialmente adequado a investigações que visam explorar situações da vida real cujos limites não estão claramente definidos. Diferentemente da pesquisa experimental, em que o investigador manipula variáveis em condições controladas para testar relações de causa e efeito, o presente estudo não envolve qualquer manipulação de variáveis, incidindo antes sobre a observação e a interpretação de uma situação real tal como ela ocorre no seu contexto natural, o que reforça a adequação do estudo de caso como procedimento adoptado.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "3.1.2.",
+
+      title: "Quanto à natureza",
+
+      paragraphs: [
+                "Quanto à natureza, a pesquisa classifica-se como aplicada, uma vez que se orienta para a produção de conhecimentos com aplicação prática, dirigidos à resolução de um problema concreto identificado na Universidade Zambeze.",
+                "Ainda segundo Gil (2008), a pesquisa aplicada tem como finalidade gerar conhecimentos para a aplicação prática, voltados para a solução de problemas específicos, envolvendo interesses e verdades locais. Neste sentido, o estudo não se limita à produção de conhecimento teórico sobre a gestão de objectos perdidos e achados, mas resulta directamente no desenvolvimento da plataforma UniAchados, concebida para responder às necessidades reais da comunidade académica e da AEUNIZA.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "3.1.3.",
+
+      title: "Quanto aos objectivos",
+
+      paragraphs: [
+                "Do ponto de vista dos objectivos, a pesquisa assume um carácter exploratório, descritivo e explicativo, dimensões que se articulam de forma complementar ao longo do estudo.",
+                "Segundo Gil (2008), as pesquisas exploratórias têm como principal finalidade proporcionar maior familiaridade com o problema, tornando-o mais explícito ou possibilitando a construção de hipóteses, sendo particularmente indicadas quando o tema é pouco explorado. Esta dimensão exploratória manifesta-se na necessidade de compreender, num contexto ainda pouco documentado, como decorre actualmente a gestão de objectos perdidos e achados na Universidade Zambeze.",
+                "As pesquisas descritivas, segundo o mesmo autor, têm como objectivo primordial a descrição das características de uma determinada população ou fenómeno, ou o estabelecimento de relações entre variáveis, recorrendo frequentemente a técnicas padronizadas de recolha de dados, como o questionário e a entrevista. É este carácter descritivo que se evidencia na caracterização da frequência das ocorrências de perda e achado, dos meios actualmente utilizados para comunicar essas ocorrências e das funcionalidades mais valorizadas pelos utilizadores.",
+                "Por fim, a dimensão explicativa decorre da necessidade de ir além da simples descrição do problema, procurando identificar os factores que determinam as dificuldades enfrentadas pela comunidade académica na procura e recuperação dos seus pertences.",
+                "Conforme o mesmo autor (Gil, 2008), as pesquisas explicativas têm como preocupação central identificar os factores que determinam ou que contribuem para a ocorrência dos fenómenos, aprofundando o conhecimento da realidade ao explicar a razão, o porquê das coisas, constituindo o tipo de pesquisa mais complexo e delicado. É a partir desta compreensão das causas, como a ausência de um registo centralizado e a fragmentação dos canais de comunicação actualmente utilizados, que se torna possível definir com rigor os requisitos e as funcionalidades essenciais da plataforma a desenvolver.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "3.1.4.",
+
+      title: "Abordagem da pesquisa",
+
+      paragraphs: [
+                "A pesquisa assume uma natureza quali-quantitativa. A componente quantitativa expressa-se na aplicação de questionários à comunidade académica, cujos dados permitiram mensurar a frequência das ocorrências de perda e achado, bem como identificar, em termos numéricos, as funcionalidades mais valorizadas pelos utilizadores. A componente qualitativa, por sua vez, manifesta-se na entrevista realizada junto da AEUNIZA, na observação directa efectuada pelo investigador e na interpretação das respostas abertas dos questionários, permitindo compreender os procedimentos, as percepções e as necessidades da comunidade universitária de forma mais aprofundada. Esta combinação de abordagens permite que os dados quantitativos e qualitativos se complementem, conferindo maior robustez e validade aos resultados obtidos.",
+            ],
+        },
+        { level: 1, number: "3.2.", title: "Fontes de dados e técnicas de recolha", paragraphs: [
+                "Para a realização do presente estudo foram utilizadas técnicas complementares de recolha de dados, seleccionadas em função da sua adequação aos objectivos da investigação e ao tipo de informação necessária para fundamentar o desenvolvimento do sistema, distinguindo-se entre fontes de dados primários e fontes de dados secundários.",
+            ]
+        },
+        {
+
+      level: 2,
+
+      number: "3.2.1.",
+
+      title: "Para dados primários",
+
+      paragraphs: [
+                "Os dados primários foram recolhidos através de três técnicas complementares: o questionário, a entrevista e a observação directa.",
+                "O questionário online, dirigido à comunidade académica, teve como objectivo recolher informação sobre a frequência com que os membros da comunidade perdem ou encontram objectos nos espaços da universidade, os meios que utilizam actualmente para comunicar essas ocorrências, as principais dificuldades que enfrentam no processo de recuperação dos seus pertences e as funcionalidades que consideram mais relevantes numa plataforma digital dedicada a esta finalidade.",
+                "A escolha do questionário online justifica-se pela possibilidade de alcançar um número significativo de respondentes de forma rápida e eficiente, permitindo a recolha de dados quantitativos que subsidiaram a identificação dos requisitos funcionais do sistema.",
+                "A entrevista foi dirigida aos colaboradores da AEUNIZA, com o propósito de compreender o papel que a associação desempenha actualmente na mediação de objectos perdidos e achados, os procedimentos adoptados para a recepção e a guarda dos objectos encontrados, os recursos de que dispõe para esta actividade e a sua disponibilidade para assumir a função de ponto central de custódia e entrega no âmbito do sistema proposto.",
+                "Segundo Gil (2008), a entrevista constitui uma das técnicas mais utilizadas nas ciências sociais, caracterizando-se como uma forma de interacção social em que uma das partes procura obter informação junto da outra, permitindo aprofundar aspectos que um instrumento estandardizado, como o questionário, dificilmente captaria com o mesmo grau de detalhe. A opção pela entrevista, em detrimento do questionário, junto de um grupo reduzido e claramente identificado de colaboradores, revelou-se mais adequada por possibilitar um contacto directo e a exploração aprofundada dos procedimentos institucionais em vigor.",
+                "A observação directa foi realizada pelo próprio investigador, enquanto membro da comunidade académica da Universidade Zambeze, o que permitiu um contacto continuado com a realidade em estudo.",
+                "Ainda segundo Gil (2008), a observação directa constitui uma técnica de recolha de dados que possibilita obter informação sobre determinados aspectos da realidade sem necessidade de intermediação, através do contacto directo do investigador com o fenómeno observado. Esta condição de proximidade permitiu identificar, ao longo do percurso académico do investigador no Campus de Matacuane, as práticas informais actualmente adoptadas na comunicação e na gestão de objectos perdidos e achados, complementando e permitindo confrontar as informações obtidas através do questionário e da entrevista.",
+                "Os dados obtidos através destas três técnicas contribuíram para uma compreensão mais aprofundada da realidade institucional e para a definição dos requisitos funcionais e não funcionais do sistema, assegurando que a solução desenvolvida respondesse às necessidades efectivas dos seus utilizadores e não apenas a pressupostos teóricos.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "3.2.2.",
+
+      title: "Para dados secundários",
+
+      paragraphs: [
+                "Os dados secundários foram obtidos através da pesquisa bibliográfica e da análise documental.",
+                "Segundo Pizzani et al. (2012), a pesquisa bibliográfica é um método que permite a busca de informação para a resolução de um problema, sendo essencial para dar o suporte teórico e conceptual que sustenta o objecto de estudo ao longo de toda a investigação. No âmbito deste estudo, a pesquisa bibliográfica incidiu sobre três domínios principais:",
+            ],
+
+      list: [
+                "os conceitos e a importância dos sistemas de informação, com particular atenção ao contexto universitário;",
+                "a problemática da gestão de objectos perdidos e achados em instituições de ensino superior, incluindo os métodos tradicionais e as soluções digitais existentes; e",
+                "as tecnologias de desenvolvimento web adequadas à implementação do sistema proposto.",
+            ],
+
+      trailingParagraphs: [
+                "A análise destas fontes permitiu identificar as funcionalidades essenciais de um sistema de perdidos e achados, compreender as boas práticas documentadas na literatura e fundamentar as decisões técnicas adoptadas no desenvolvimento do UniAchados.",
+                "A análise documental incidiu sobre documentos institucionais da Universidade Zambeze, incluindo informação disponível no portal oficial da instituição relativa à sua estrutura orgânica e missão institucional. Esta técnica permitiu contextualizar o sistema proposto na realidade institucional da Universidade Zambeze, assegurando que as funcionalidades e a arquitectura do UniAchados fossem concebidas em consonância com as características e as necessidades específicas da instituição.",
+            ],
+        },
+        { level: 1, number: "3.3.", title: "Definição da população e amostra", paragraphs: []
+        },
+        {
+
+      level: 2,
+
+      number: "3.3.1.",
+
+      title: "Definição da população",
+
+      paragraphs: [
+                "A população deste estudo é constituída pela comunidade académica da Universidade Zambeze, Campus de Matacuane. A esta população acresce um grupo específico de colaboradores da Associação de Estudantes da Universidade Zambeze (AEUNIZA), enquanto entidade responsável pela custódia e gestão dos objectos perdidos e achados no campus, cuja auscultação foi essencial para a compreensão dos processos institucionais actualmente em vigor.",
+                "Segundo Gil (2008), a população ou universo de uma pesquisa corresponde ao conjunto definido de elementos que possuem determinadas características em comum, relevantes para o problema em estudo, ao passo que a amostra representa um subconjunto desse universo, seleccionado com o objectivo de permitir inferências razoáveis sobre o todo sem a necessidade de inquirir a totalidade dos elementos.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "3.3.2.",
+
+      title: "Processo de amostragem",
+
+      paragraphs: [
+                "Para a definição da amostra, no que respeita ao questionário online dirigido à comunidade académica, foi adoptada uma técnica de amostragem não probabilística por conveniência, uma vez que a participação decorreu da disponibilidade e da adesão voluntária dos respondentes, contactados através dos canais de comunicação da AEUNIZA e da própria universidade. Este tipo de amostragem foi considerado adequado à natureza exploratória do estudo, permitindo recolher, num período de tempo limitado, um número significativo de respostas representativas da diversidade da comunidade universitária.",
+                "Relativamente à entrevista dirigida à AEUNIZA, a amostra correspondeu a um censo dos colaboradores, num total de cinco colaboradores, por se tratar de um grupo reduzido e claramente delimitado, cuja auscultação integral se revelou possível e mais adequada do que a selecção de uma amostra parcial.",
+                "Já a observação directa não decorreu de um processo de amostragem propriamente dito, tendo antes resultado da inserção natural e continuada do investigador na comunidade académica do Campus de Matacuane, o que permitiu acompanhar de forma informal, mas sistemática, as práticas correntes relacionadas com a gestão de objectos perdidos e achados.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "3.4.",
+
+      title: "Metodologia de Desenvolvimento do Sistema",
+
+      paragraphs: [
+                "Para o desenvolvimento do sistema UniAchados, foi adoptada a metodologia ágil Scrum, que organiza o processo em ciclos curtos e iterativos denominados Sprints. Segundo Schwaber e Sutherland (2020), o Scrum é um framework que permite desenvolver produtos de forma incremental, entregando funcionalidades em intervalos regulares e incorporando feedback contínuo ao longo do processo.",
+                "A escolha do Scrum justifica-se pela natureza do projecto, um trabalho de culminação de curso com prazo definido e recursos limitados, que exige uma abordagem capaz de produzir resultados tangíveis de forma progressiva, adaptando-se a eventuais mudanças nos requisitos à medida que o entendimento do problema se aprofunda.",
+                "Na prática, o desenvolvimento do UniAchados foi organizado em quatro Sprints, conforme descrito de seguida:",
+            ],
+
+      list: [
+                "Sprint 1: configuração do ambiente de desenvolvimento e criação da base de dados; autenticação da AEUNIZA enquanto entidade administradora; publicação de objectos encontrados (exclusiva da AEUNIZA); comunicação de perdas pelos membros da comunidade, avaliada pela AEUNIZA.",
+                "Sprint 2: funcionalidades de pesquisa e filtragem por múltiplos critérios; sistema de sugestão de correspondências entre objectos; notificações aos utilizadores.",
+                "Sprint 3: mecanismo de verificação de propriedade; geração automática de códigos QR para o processo de levantamento, com registo automático dos dados de quem procede ao levantamento.",
+                "Sprint 4: painel administrativo com gestão de utilizadores, incluindo registo automático mediante o carregamento de ficheiros (PDF/imagem) contendo código e nome dos estudantes; implementação das estatísticas da plataforma; testes e correcções finais.",
+            ],
+        },
+    ],
+
+  references: [
+        {
+
+      note: "Confirmar as referências completas de: Gil (2008); Pizzani et al. (2012); Schwaber & Sutherland (2020, The Scrum Guide) antes de as incluir na lista final de referências bibliográficas.",
+        },
+    ],
+};
+
+
+
+/**
+
+ * CAPÍTULO IV: APRESENTAÇÃO E DISCUSSÃO DE RESULTADOS
+
+ *
+
+ * Transcrito do rascunho, que já estava bem escrito em Português Europeu
+
+ * pré-AO90 — apenas duas correcções de consistência, ambas já assinaladas
+
+ * no próprio rascunho com "[REVER]":
+
+ *
+
+ *  1) RF12 (prazo de retenção): o rascunho tinha "5 meses" nalgum ponto,
+
+ *     mas a Tabela 2 do Capítulo II já fixa "90 dias" como prazo
+
+ *     institucional. Uniformizei para 90 dias em RF12 — se não for esse o
+
+ *     valor que pretendes, diz-me e ajusto os dois capítulos em conjunto.
+
+ *  2) "Draw.io" vs "Draw.i" em 4.7.2: mantive "Draw.io", por ser a
+
+ *     ferramenta real (draw.io / diagrams.net); "Draw.i" não existe.
+
+ *
+
+ * Quadros 1–6 (dados do questionário) e Tabelas 1–7 (requisitos e casos de
+
+ * uso) foram transcritos como dados estruturados (`tables`). As Figuras
+
+ * 5–13 já vinham com o espaço de imagem indicado no rascunho — mantive
+
+ * esse texto tal como estava, no campo `figure.placeholder` de cada uma.
+
+ */
+
+const capituloIV = {
+
+  chapter: "CAPÍTULO IV: APRESENTAÇÃO E DISCUSSÃO DE RESULTADOS",
+
+  intro: [
+        "O presente capítulo apresenta os resultados obtidos junto da comunidade académica da Universidade Zambeze (UNIZA) relativamente à problemática da gestão de objectos perdidos e achados no campus, base empírica que sustenta a proposta da plataforma UniAchados. Os dados foram recolhidos através de um questionário estruturado, aplicado em formato electrónico a estudantes, docentes e funcionários, complementado por uma entrevista semiestruturada realizada ao Presidente da Associação de Estudantes da Universidade Zambeze (AEUNIZA), cujo guião consta do Anexo 1. A secção 4.1 procede à caracterização da amostra e à exposição dos dados brutos recolhidos através do questionário; a secção 4.2 apresenta a análise e a discussão desses dados, articulando os resultados quantitativos com o testemunho qualitativo prestado pelo Presidente da AEUNIZA; e as secções seguintes (4.3 a 4.8) descrevem o sistema UniAchados desenvolvido em resposta a estes resultados, incluindo os seus requisitos, a modelação, a arquitectura, as tecnologias utilizadas e as interfaces implementadas.",
+    ],
+
+  sections: [
+        {
+
+      level: 1,
+
+      number: "4.1.",
+
+      title: "Apresentação dos resultados",
+
+      paragraphs: [],
+
+      subsections: [
+                {
+
+          label: "a) Caracterização da amostra e dos participantes",
+
+          paragraphs: [
+                        "O questionário obteve um total de 110 respostas válidas, provenientes de membros da comunidade académica da UNIZA com diferentes vínculos institucionais. Como se observa no Quadro 1, a amostra é largamente dominada por estudantes, o que é consistente com o facto de estes constituírem o grupo mais exposto à circulação de bens pessoais nos espaços comuns do campus e, por conseguinte, o mais afectado pela ausência de um mecanismo formal de gestão de achados e perdidos.",
+                    ],
+
+          tables: [
+                        {
+
+              number: "Quadro 1",
+
+              title: "Distribuição dos participantes por vínculo institucional com a Universidade Zambeze",
+
+              columns: [
+                                "Vínculo institucional",
+                                "Frequência",
+                                "Percentagem"
+                            ],
+
+              rows: [
+                                [
+                                    "Estudante",
+                                    "102",
+                                    "92,7%"
+                                ],
+                                [
+                                    "Docente",
+                                    "5",
+                                    "4,5%"
+                                ],
+                                [
+                                    "Funcionário",
+                                    "3",
+                                    "2,7%"
+                                ],
+                                [
+                                    "Total",
+                                    "110",
+                                    "100%"
+                                ],
+                            ],
+
+              source: "Dados do questionário aplicado no âmbito do presente estudo (2026).",
+                        },
+                    ],
+
+          trailingParagraphs: [
+                        "Entre os 102 participantes com estatuto de estudante, o Quadro 2 mostra que mais de um terço se encontra no primeiro ano de frequência, decrescendo progressivamente a proporção nos anos subsequentes, com uma parcela residual de estudantes com mais de quatro anos de permanência na instituição.",
+                    ],
+
+          tables2: [
+                        {
+
+              number: "Quadro 2",
+
+              title: "Distribuição dos estudantes por ano de frequência (n = 102)",
+
+              columns: [
+                                "Ano de frequência",
+                                "Frequência",
+                                "Percentagem"
+                            ],
+
+              rows: [
+                                [
+                                    "1.º ano",
+                                    "35",
+                                    "34,3%"
+                                ],
+                                [
+                                    "2.º ano",
+                                    "18",
+                                    "17,6%"
+                                ],
+                                [
+                                    "3.º ano",
+                                    "17",
+                                    "16,7%"
+                                ],
+                                [
+                                    "4.º ano",
+                                    "17",
+                                    "16,7%"
+                                ],
+                                [
+                                    "Mais de 4 anos",
+                                    "15",
+                                    "14,7%"
+                                ],
+                                [
+                                    "Total",
+                                    "102",
+                                    "100%"
+                                ],
+                            ],
+
+              source: "Dados do questionário aplicado no âmbito do presente estudo (2026).",
+                        },
+                    ],
+
+          closingParagraphs: [
+                        "Para além da componente quantitativa, a caracterização dos participantes integra uma fonte qualitativa complementar: uma entrevista semiestruturada ao Presidente da AEUNIZA, entidade estudantil frequentemente apontada, ao longo das respostas ao questionário, como potencial custodiante dos objectos encontrados. As respostas ao guião, composto por seis questões relativas ao modo como a comunidade académica lida actualmente com os objectos perdidos, à existência de um ponto físico de custódia, à pertinência de um registo formal, às funcionalidades consideradas relevantes e ao destino dos objectos nunca reclamados, foram prestadas pelo Presidente da AEUNIZA e encontram-se reproduzidas na íntegra no Anexo 1. O respectivo conteúdo é analisado, em articulação com os dados do questionário, na secção 4.2.",
+                    ],
+                },
+                {
+
+          label: "b) Apresentação dos dados brutos",
+
+          paragraphs: [
+                        "No que respeita à experiência prévia dos participantes com a perda de bens pessoais, 73 dos 110 respondentes (66,4%) afirmaram já ter perdido algum objecto pessoal no campus, contra 37 (33,6%) que nunca vivenciaram tal situação. Entre os 73 que reportaram uma perda, 41 (56,2%) conseguiram recuperar o objecto e 32 (43,8%) não o conseguiram, o que indica uma taxa de insucesso próxima de metade dos casos reportados.",
+                        "Quanto à experiência inversa, 53 dos 110 participantes (48,2%) já encontraram um objecto perdido de outra pessoa no campus, enquanto 57 (51,8%) nunca se viram nessa situação. Dos 53 que encontraram um objecto, 20 (37,7%) publicaram-no nas redes sociais na tentativa de localizar o dono, 17 (32,1%) entregaram-no na secretaria e 16 (30,2%) optaram por ficar com o objecto à espera que o dono aparecesse, revelando uma dispersão de procedimentos informais na ausência de um canal único e reconhecido para este efeito.",
+                        "Questionados sobre o grau de concordância, numa escala de 1 (discordo totalmente) a 5 (concordo totalmente), quanto à afirmação de que a falta de um sistema centralizado dificulta a recuperação de objectos na universidade, os participantes concentraram-se marcadamente nos níveis mais elevados de concordância, como evidencia o Quadro 3.",
+                    ],
+
+          tables: [
+                        {
+
+              number: "Quadro 3",
+
+              title: "Grau de concordância quanto à dificuldade de recuperação de objectos por ausência de um sistema centralizado (n = 110)",
+
+              columns: [
+                                "Grau de concordância",
+                                "Frequência",
+                                "Percentagem"
+                            ],
+
+              rows: [
+                                [
+                                    "1 – Discordo totalmente",
+                                    "2",
+                                    "1,8%"
+                                ],
+                                [
+                                    "2",
+                                    "11",
+                                    "10,0%"
+                                ],
+                                [
+                                    "3",
+                                    "8",
+                                    "7,3%"
+                                ],
+                                [
+                                    "4",
+                                    "59",
+                                    "53,6%"
+                                ],
+                                [
+                                    "5 – Concordo totalmente",
+                                    "30",
+                                    "27,3%"
+                                ],
+                                [
+                                    "Total",
+                                    "110",
+                                    "100%"
+                                ],
+                            ],
+
+              source: "Dados do questionário aplicado no âmbito do presente estudo (2026).",
+                        },
+                    ],
+
+          closingParagraphs: [
+                        "Relativamente às principais dificuldades sentidas na recuperação de objectos perdidos, questão de resposta múltipla, o desconhecimento sobre a quem reportar e sobre onde procurar foram as opções mais assinaladas, seguidas da demora no processo e da falta de informação centralizada, conforme sintetizado no Quadro 4.",
+                    ],
+
+          tables3: [
+                        {
+
+              number: "Quadro 4",
+
+              title: "Principais dificuldades identificadas na recuperação de objectos perdidos (resposta múltipla, n = 110)",
+
+              columns: [
+                                "Dificuldade identificada",
+                                "Frequência",
+                                "Percentagem"
+                            ],
+
+              rows: [
+                                [
+                                    "Não sei a quem reportar",
+                                    "59",
+                                    "53,6%"
+                                ],
+                                [
+                                    "Não sabia onde procurar",
+                                    "59",
+                                    "53,6%"
+                                ],
+                                [
+                                    "Demora no processo",
+                                    "43",
+                                    "39,1%"
+                                ],
+                                [
+                                    "Falta de informação centralizada",
+                                    "36",
+                                    "32,7%"
+                                ],
+                            ],
+
+              source: "Dados do questionário aplicado no âmbito do presente estudo (2026). Nota: por se tratar de uma questão de resposta múltipla, a soma das percentagens excede 100%.",
+                        },
+                    ],
+
+          moreParagraphs: [
+                        "No que concerne às funcionalidades consideradas mais importantes numa plataforma digital de gestão de achados e perdidos, também aqui de resposta múltipla, a verificação de identidade do reclamante destacou-se como a opção mais valorizada, seguida das notificações automáticas e do registo de objectos perdidos, praticamente empatados, e das restantes funcionalidades listadas no Quadro 5.",
+                    ],
+
+          tables4: [
+                        {
+
+              number: "Quadro 5",
+
+              title: "Funcionalidades consideradas mais importantes numa plataforma de gestão de achados e perdidos (resposta múltipla, n = 110)",
+
+              columns: [
+                                "Funcionalidade",
+                                "Frequência",
+                                "Percentagem"
+                            ],
+
+              rows: [
+                                [
+                                    "Verificação de identidade do reclamante",
+                                    "47",
+                                    "42,7%"
+                                ],
+                                [
+                                    "Notificações automáticas",
+                                    "39",
+                                    "35,5%"
+                                ],
+                                [
+                                    "Registo de objectos perdidos",
+                                    "39",
+                                    "35,5%"
+                                ],
+                                [
+                                    "Pesquisa por categoria, local e data",
+                                    "37",
+                                    "33,6%"
+                                ],
+                                [
+                                    "Histórico de reclamações",
+                                    "36",
+                                    "32,7%"
+                                ],
+                                [
+                                    "Registo de objectos achados",
+                                    "36",
+                                    "32,7%"
+                                ],
+                                [
+                                    "Chat entre utilizadores",
+                                    "34",
+                                    "30,9%"
+                                ],
+                            ],
+
+              source: "Dados do questionário aplicado no âmbito do presente estudo (2026). Nota: por se tratar de uma questão de resposta múltipla, a soma das percentagens excede 100%.",
+                        },
+                    ],
+
+          evenMoreParagraphs: [
+                        "No que respeita à intenção de adopção, 86 participantes (78,2%) manifestaram disposição para usar uma plataforma digital de reporte e procura de objectos perdidos, 14 (12,7%) mostraram-se indecisos e apenas 10 (9,1%) rejeitaram a hipótese. Sobre o tipo de acesso preferido, 53 respondentes (48,2%) indicaram preferir dispor simultaneamente de aplicação móvel e sítio Web, 30 (27,3%) optaram exclusivamente pela aplicação móvel e 27 (24,5%) pelo sítio Web.",
+                        "Quanto à possibilidade de a AEUNIZA assumir a custódia dos objectos encontrados e mediar a respectiva entrega, o grau de concordância manifestado pelos participantes, numa escala idêntica de 1 a 5, encontra-se resumido no Quadro 6, verificando-se uma tendência favorável, ainda que menos acentuada do que a registada relativamente à necessidade de um sistema centralizado.",
+                    ],
+
+          tables5: [
+                        {
+
+              number: "Quadro 6",
+
+              title: "Grau de concordância quanto à adequação da AEUNIZA como entidade custodiante dos objectos encontrados (n = 110)",
+
+              columns: [
+                                "Grau de concordância",
+                                "Frequência",
+                                "Percentagem"
+                            ],
+
+              rows: [
+                                [
+                                    "1 – Discordo totalmente",
+                                    "3",
+                                    "2,7%"
+                                ],
+                                [
+                                    "2",
+                                    "9",
+                                    "8,2%"
+                                ],
+                                [
+                                    "3",
+                                    "25",
+                                    "22,7%"
+                                ],
+                                [
+                                    "4",
+                                    "37",
+                                    "33,6%"
+                                ],
+                                [
+                                    "5 – Concordo totalmente",
+                                    "36",
+                                    "32,7%"
+                                ],
+                                [
+                                    "Total",
+                                    "110",
+                                    "100%"
+                                ],
+                            ],
+
+              source: "Dados do questionário aplicado no âmbito do presente estudo (2026).",
+                        },
+                    ],
+
+          finalParagraphs: [
+                        "Relativamente à questão aberta sobre o funcionamento do processo de custódia e entrega dos objectos, 81 dos 110 participantes deixaram uma sugestão, tendo os restantes 29 optado por não responder. As sugestões registadas com maior frequência foram a emissão de um recibo ou comprovativo de entrega, mencionada por 13 respondentes, a divulgação semanal, nas redes sociais da AEUNIZA, dos objectos à espera do dono, referida por 11, e a partilha da custódia entre a AEUNIZA e a secretaria como forma de reforçar a confiança no processo, também com 11 menções. Com frequência ligeiramente inferior surgiram a criação de uma sala específica com prateleiras organizadas por tipo de objecto, sugerida por 9 participantes, e a ausência de sugestão adicional além do reconhecimento de que qualquer sistema representaria uma melhoria face à situação actual, referida por 8. As restantes propostas, cada uma delas mencionada entre 4 e 7 vezes, incluíram a exigência de um documento de identificação antes da entrega do objecto ao reclamante, a definição de um horário fixo de atendimento, a nomeação de um responsável por bloco para recepção dos objectos com posterior centralização num único ponto, a manutenção de um registo simultaneamente físico e digital, e a fixação de um prazo, por exemplo de trinta dias, findo o qual o objecto seria doado ou reaproveitado.",
+                        "No comentário final, de natureza igualmente aberta, 97 dos 110 participantes deixaram uma apreciação sobre a proposta da plataforma UniAchados. O desejo de ver a plataforma implementada ainda no ano lectivo em curso foi a observação mais frequente, surgindo em 14 respostas, seguida da expectativa de que o projecto efectivamente avance, expressa por 13 participantes que relataram experiências pessoais de perda de objectos sem saber a quem reportar. Doze respondentes condicionaram o sucesso da plataforma a um esforço de divulgação junto da comunidade académica, e 11 sublinharam que a adopção dependerá do grau de confiança das pessoas em reportarem os objectos que encontram. Registaram-se ainda dez apreciações globalmente favoráveis à ideia, nove referências à importância de a plataforma funcionar bem mesmo com pouco saldo de internet, oito votos de incentivo ao projecto enquanto necessidade real do campus, sete comentários sem observações adicionais, cinco reconhecimentos do potencial da iniciativa, quatro sugestões de sessões de apresentação para os caloiros no início do ano lectivo, três felicitações pela iniciativa e uma referência à importância de a plataforma se manter gratuita para todos os estudantes. Treze participantes não deixaram qualquer comentário final.",
+                    ],
+                },
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "4.2.",
+
+      title: "Análise e discussão dos resultados",
+
+      paragraphs: [
+                "A análise que se segue articula os dados quantitativos apresentados na secção anterior com o testemunho qualitativo do Presidente da AEUNIZA, procurando estabelecer, sempre que possível, pontes de convergência entre a percepção da comunidade académica, enquanto utilizadora final, e a perspectiva da entidade estudantil frequentemente indicada como potencial custodiante dos objectos encontrados.",
+            ],
+
+      subsections: [
+                {
+
+          label: "a) Análise dos dados quantitativos",
+
+          paragraphs: [
+                        "O predomínio de estudantes na amostra, com particular concentração no primeiro ano de frequência, reflecte-se na natureza dos resultados obtidos, na medida em que este é o grupo com menor conhecimento acumulado dos circuitos informais actualmente utilizados para recuperar bens perdidos, sendo por isso o mais sensível à ausência de um canal único e reconhecido para o efeito. A elevada proporção de participantes que já perderam algum objecto no campus (66,4%), associada a uma taxa de recuperação inferior a 60%, evidencia que os mecanismos actualmente disponíveis não garantem, de forma consistente, o reencontro entre o objecto e o respectivo dono.",
+                        "A dispersão de procedimentos adoptados por quem encontra um objecto, repartidos entre a publicação em redes sociais, a entrega na secretaria e a simples retenção do bem à espera de reclamação, confirma a inexistência de um canal único e amplamente reconhecido. Esta leitura é directamente sustentada pelo Quadro 4: o desconhecimento sobre a quem reportar (53,6%) e sobre onde procurar (53,6%) constituem, em conjunto, as duas dificuldades mais assinaladas pelos participantes, à frente da demora no processo (39,1%) e da própria falta de informação centralizada (32,7%). Este padrão indica que o problema central não reside apenas na ausência de uma base de dados centralizada, mas sobretudo na inexistência de um ponto de contacto único e amplamente divulgado — uma distinção relevante para a concepção da plataforma, que deve assegurar não só a centralização técnica da informação, mas também a sua visibilidade e a clareza do procedimento a seguir. Este diagnóstico é reforçado pelo elevado grau de concordância quanto à afirmação de que a ausência de um sistema centralizado dificulta a recuperação de objectos, com 80,9% dos participantes a posicionarem-se nos níveis 4 ou 5 da escala (Quadro 3).",
+                        "A hierarquia de funcionalidades mais valorizadas para uma futura plataforma reforça esta leitura: a verificação de identidade do reclamante surge destacada como a opção mais assinalada (42,7%), à frente de funcionalidades mais operacionais como as notificações automáticas ou o registo de objectos (Quadro 5). A comunidade académica associa, portanto, a eficácia de uma solução digital não apenas à centralização e à divulgação da informação, mas também à garantia de que o objecto será entregue à pessoa legítima.",
+                        "A elevada intenção de adopção da plataforma (78,2% de respostas favoráveis, com apenas 9,1% de rejeição) e a preferência maioritária por um acesso combinado através de aplicação móvel e sítio Web (48,2%) sustentam a viabilidade da proposta e fornecem orientação directa para as decisões de arquitectura do sistema. Já o grau de concordância quanto à adequação da AEUNIZA como entidade custodiante, embora globalmente favorável (66,3% nos níveis 4 e 5), apresenta uma dispersão mais acentuada do que a registada relativamente à necessidade de centralização, com 22,7% dos participantes numa posição neutra (Quadro 6). Esta diferença sugere que, ainda que a necessidade de um sistema centralizado reúna um consenso quase unânime, a identidade da entidade que deverá assumir a custódia física dos objectos permanece uma questão menos consolidada junto da comunidade académica, o que é corroborado pelas sugestões, registadas na questão aberta, de partilha de custódia entre a AEUNIZA e a secretaria como forma de reforçar a confiança no processo.",
+                    ],
+                },
+                {
+
+          label: "b) Análise qualitativa: entrevista ao Presidente da AEUNIZA",
+
+          paragraphs: [
+                        "As seis questões do guião reproduzido no Anexo 1 foram respondidas pelo Presidente da AEUNIZA, cuja perspectiva institucional permite complementar os dados do questionário com a leitura de quem, na prática, já é procurado informalmente pela comunidade académica para lidar com objectos perdidos e encontrados.",
+                        "Questionado sobre a forma como a comunidade académica lida actualmente com os objectos perdidos, o Presidente da AEUNIZA referiu que os objectos são entregues aos guardas da faculdade, reportados na secretaria da universidade ou comunicados ao CETIC, departamento de informática, para consulta das câmaras de vigilância. Esta descrição confirma, a partir da perspectiva institucional, a dispersão de procedimentos já identificada nas respostas ao questionário, evidenciando que a comunidade académica recorre, em simultâneo, a pelo menos três canais distintos e sem qualquer articulação entre si — o que explica directamente o desconhecimento generalizado sobre a quem reportar e onde procurar, identificado como a principal dificuldade no Quadro 4.",
+                        "Quanto à existência de um ponto físico de custódia dos objectos encontrados, o Presidente da AEUNIZA respondeu negativamente, esclarecendo que ainda não existe qualquer meio formal para o efeito. Esta ausência corrobora directamente a percepção manifestada pelos participantes quanto à falta de um sistema centralizado, e justifica, do ponto de vista institucional, as sugestões recolhidas na questão aberta sobre a criação de uma sala específica com prateleiras organizadas por tipo de objecto e sobre a partilha de custódia entre a AEUNIZA e a secretaria.",
+                        "Relativamente à pertinência de a AEUNIZA assumir um papel activo na gestão de objectos perdidos e ao valor atribuído ao respectivo registo formal, o Presidente da AEUNIZA manifestou uma posição claramente favorável em ambas as questões, considerando o assunto essencial para a associação e reconhecendo a importância de registar os objectos reportados como perdidos ou encontrados. Esta disponibilidade institucional é compatível com o grau de concordância moderadamente favorável observado no Quadro 6 quanto à adequação da AEUNIZA como entidade custodiante, sugerindo que a reserva manifestada por parte da comunidade académica não decorre de indisponibilidade da associação, mas antes da ausência, até ao momento, de mecanismos formais que sustentem essa confiança.",
+                        "No que respeita às funcionalidades consideradas importantes para assegurar a entrega do objecto ao dono legítimo, o Presidente da AEUNIZA destacou a necessidade de a plataforma incluir mecanismos de autenticação e de verificação da legitimidade do reclamante. Esta resposta converge, de forma directa, com o resultado mais expressivo do Quadro 5, no qual a verificação de identidade do reclamante foi a funcionalidade mais valorizada pelos participantes do questionário. A coincidência entre a prioridade identificada pela entidade que tenderá a assumir a custódia dos objectos e a prioridade expressa pelos futuros utilizadores da plataforma constitui um dos achados mais consistentes deste estudo, e reforça a necessidade de a verificação de identidade ser tratada como requisito central, e não acessório, na concepção da plataforma UniAchados.",
+                        "Por fim, questionado sobre o destino dos objectos nunca reclamados, o Presidente da AEUNIZA indicou que, decorrido o período de custódia definido, os objectos seriam entregues à direcção da universidade, entidade que ficaria responsável por decidir o respectivo destino. Esta resposta institucional é coerente com as sugestões recolhidas na questão aberta do questionário quanto à fixação de um prazo de custódia, indicando que tanto a comunidade académica como a AEUNIZA reconhecem a necessidade de um prazo definido e de uma instância de escalonamento para os objectos não reclamados.",
+                    ],
+                },
+                {
+
+          label: "c) Articulação entre os dados quantitativos e qualitativos",
+
+          paragraphs: [
+                        "A leitura conjunta dos dois conjuntos de dados revela uma convergência assinalável entre a experiência relatada pela comunidade académica e a perspectiva institucional da AEUNIZA. Em primeiro lugar, a dispersão de canais informais identificada no questionário corresponde, ponto por ponto, à descrição dos guardas da faculdade, da secretaria e do CETIC como vias actualmente utilizadas, confirmando que a ausência de um canal único não é apenas uma percepção dos utilizadores, mas um facto reconhecido pela própria entidade estudantil. Em segundo lugar, a inexistência de um ponto físico de custódia, confirmada pelo Presidente da AEUNIZA, explica directamente o elevado grau de concordância quanto à dificuldade de recuperação de objectos por ausência de um sistema centralizado, e fundamenta as sugestões dos participantes relativas à criação de um espaço físico dedicado.",
+                        "Em terceiro lugar, a convergência entre a resposta institucional sobre as funcionalidades mais relevantes e a hierarquia de preferências manifestada pelos participantes do questionário, ambas colocando a verificação de identidade e a autenticação do reclamante em primeiro plano, constitui a evidência mais robusta produzida por este estudo quanto às prioridades de concepção da plataforma UniAchados. Por último, a coincidência entre a indicação institucional de encaminhamento dos objectos não reclamados para a direcção da universidade, decorrido o prazo de custódia, e as sugestões dos próprios participantes quanto à fixação de um prazo definido, confirma que a definição de um período de custódia e de uma instância de escalonamento não constitui apenas uma exigência dos utilizadores, mas também uma prática já prevista pela entidade que tenderá a assumir a gestão operacional do processo.",
+                        "No seu conjunto, os resultados apresentados confirmam a existência de um problema estrutural na gestão de objectos perdidos e achados na Universidade Zambeze, caracterizado pela dispersão de canais informais, pela ausência de um ponto de custódia formal e pela falta de confiança no processo, e fornecem uma base empírica sólida — sustentada tanto pela perspectiva dos utilizadores como pela da AEUNIZA — para as opções de concepção da plataforma UniAchados, descritas nas secções seguintes.",
+                    ],
+                },
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "4.3.",
+
+      title: "Descrição do sistema proposto",
+
+      paragraphs: [
+                "O UniAchados é uma plataforma web desenvolvida para apoiar a gestão de objectos perdidos e achados na Universidade Zambeze, centralizando todas as actividades relacionadas com o registo, a pesquisa, a reclamação e a devolução de objectos encontrados no campus universitário. Este sistema constitui o resultado directo do tratamento dado aos dados recolhidos através do questionário, da entrevista e da observação directa descritos no Capítulo III, traduzindo em funcionalidades concretas as necessidades e os requisitos identificados junto da comunidade académica e da AEUNIZA.",
+                "O sistema é administrado pela Associação de Estudantes da Universidade Zambeze (AEUNIZA), que actua como entidade responsável pela recepção, armazenamento e devolução dos objectos encontrados. Sempre que um objecto é entregue à AEUNIZA, um operador efectua o seu registo no sistema, informando dados como nome do objecto, categoria, local onde foi encontrado, data e fotografia.",
+                "Após o registo, o objecto torna-se visível na plataforma para consulta por estudantes e demais membros da comunidade académica. Os utilizadores podem pesquisar objectos encontrados ou comunicar perdas através de formulários específicos. Quando um utilizador comunica a perda de um objecto, o sistema compara automaticamente as informações fornecidas com os registos existentes de objectos encontrados. Caso seja identificada uma possível correspondência, o utilizador é notificado para efectuar a verificação.",
+                "Para garantir a legitimidade da devolução, o sistema permite que a AEUNIZA realize a validação da propriedade do objecto através de perguntas de confirmação sobre características não divulgadas publicamente. Após a aprovação da reclamação, é gerado um código QR que será utilizado durante o levantamento do objecto. No momento da entrega, o operador da AEUNIZA efectua a leitura do código QR, e o sistema regista automaticamente a devolução, armazenando informações como data, hora e identificação do reclamante. Este mecanismo permite acompanhar todo o ciclo de vida do objecto, desde o seu registo até à sua devolução ao proprietário.",
+            ],
+        },
+        { level: 1, number: "4.4.", title: "Requisitos do sistema", paragraphs: []
+        },
+        {
+
+      level: 2,
+
+      number: "4.4.1.",
+
+      title: "Requisitos funcionais",
+
+      paragraphs: [
+                "Os requisitos funcionais descrevem as funcionalidades que o sistema deve oferecer aos seus utilizadores. De acordo com Sommerville (2016), estes requisitos definem o comportamento esperado do sistema, especificando as acções que o sistema deve ser capaz de realizar em resposta às interacções dos utilizadores. Para o sistema UniAchados, foram definidos os requisitos funcionais apresentados na Tabela 1.",
+            ],
+
+      table: {
+
+        number: "Tabela 1",
+
+        title: "Requisitos Funcionais do Sistema UniAchados",
+
+        columns: [
+                    "ID",
+                    "Actividade",
+                    "Atribuição",
+                    "Descrição"
+                ],
+
+        rows: [
+                    [
+                        "RF01",
+                        "Entrar",
+                        "Utilizador",
+                        "Autenticação por n.º de estudante/telefone e palavra-passe."
+                    ],
+                    [
+                        "RF02",
+                        "Redefinir palavra-passe",
+                        "Utilizador",
+                        "Troca obrigatória da palavra-passe inicial no primeiro acesso."
+                    ],
+                    [
+                        "RF03",
+                        "Consultar objecto",
+                        "Utilizador",
+                        "Consulta pública de objectos achados e perdidos (sem sessão iniciada)."
+                    ],
+                    [
+                        "RF04",
+                        "Pesquisar objectos",
+                        "Utilizador",
+                        "Pesquisa e filtros (palavras-chave, categoria, localização, data, tipo), paginação e vistas em grelha/lista."
+                    ],
+                    [
+                        "RF05",
+                        "Registar objecto encontrado",
+                        "Utilizador",
+                        "Registo de objectos achados pelo operador, com fotografia e perguntas de verificação obrigatórias."
+                    ],
+                    [
+                        "RF06",
+                        "Comunicar perda de objecto",
+                        "Utilizador",
+                        "Comunicação de perdas por membros, com histórico pessoal."
+                    ],
+                    [
+                        "RF07",
+                        "Notificar utilizadores",
+                        "Sistema",
+                        "Correspondência automática perdido-achado, com notificação ao dono."
+                    ],
+                    [
+                        "RF08",
+                        "Submeter reclamação",
+                        "Utilizador",
+                        "Permite ao membro da comunidade submeter um pedido de reclamação sobre um objecto encontrado, respondendo a perguntas de verificação."
+                    ],
+                    [
+                        "RF09",
+                        "Avaliar reclamação",
+                        "AEUNIZA",
+                        "Permite ao operador da AEUNIZA avaliar as respostas de verificação e aprovar ou rejeitar o pedido de reclamação."
+                    ],
+                    [
+                        "RF10",
+                        "Gerar código QR",
+                        "Sistema",
+                        "Gera automaticamente um código QR associado a cada reclamação aprovada, contendo as informações necessárias para o levantamento."
+                    ],
+                    [
+                        "RF11",
+                        "Processar levantamento",
+                        "Sistema",
+                        "Permite ao operador da AEUNIZA registar a entrega do objecto através da leitura do código QR, registando automaticamente os dados do levantamento."
+                    ],
+                    [
+                        "RF12",
+                        "Gerir prazos de retenção",
+                        "Sistema",
+                        "Gestão de custódia, com prazo de retenção de 90 dias e sinalização automática para entrega à direcção da universidade findo esse prazo."
+                    ],
+                    [
+                        "RF13",
+                        "Visualizar estatísticas",
+                        "Sistema",
+                        "Apresenta estatísticas de utilização, incluindo número de objectos registados, taxa de recuperação e locais com maior incidência de perdas."
+                    ],
+                    [
+                        "RF14",
+                        "Gerir utilizadores",
+                        "Admin",
+                        "Permite ao administrador gerir as contas de utilizadores e operadores, incluindo criação, edição e desactivação de contas."
+                    ],
+                    [
+                        "RF15",
+                        "Gerir categorias",
+                        "AEUNIZA",
+                        "Permite criar, editar e remover as categorias de objectos disponíveis na plataforma."
+                    ],
+                    [
+                        "RF16",
+                        "Gerir relatórios",
+                        "Admin",
+                        "Relatórios filtráveis, exportáveis em PDF e CSV."
+                    ],
+                    [
+                        "RF17",
+                        "Histórico de levantamentos",
+                        "Sistema",
+                        "Histórico de levantamentos com registo instantâneo dos dados existentes no momento da entrega, disponível para pesquisa."
+                    ],
+                ],
+
+        source: "O autor (2026).",
+
+        note: "RF12 uniformizado para 90 dias, para coincidir com o prazo de retenção já fixado na Tabela 2 do Capítulo II (o rascunho tinha \"5 meses\" num ponto e \"90 dias\" noutro — resolvido a favor do valor institucional já estabelecido; confirma se é este o prazo pretendido).",
+            },
+        },
+        {
+
+      level: 2,
+
+      number: "4.4.2.",
+
+      title: "Requisitos não funcionais",
+
+      paragraphs: [
+                "Os requisitos não funcionais referem-se às características de qualidade que o sistema deve satisfazer para garantir o seu funcionamento adequado. Segundo Sommerville (2016), estes requisitos estão relacionados com propriedades do sistema como desempenho, segurança, usabilidade e disponibilidade, sendo frequentemente tão importantes quanto os requisitos funcionais, na medida em que condicionam a experiência do utilizador e a viabilidade operacional do sistema. Para o sistema UniAchados, foram definidos os requisitos não funcionais apresentados na Tabela 2.",
+            ],
+
+      table: {
+
+        number: "Tabela 2",
+
+        title: "Requisitos Não Funcionais do Sistema UniAchados",
+
+        columns: [
+                    "ID",
+                    "Nome",
+                    "Descrição"
+                ],
+
+        rows: [
+                    [
+                        "RNF01",
+                        "Usabilidade",
+                        "Interface intuitiva e de fácil utilização, com tema claro/escuro persistente."
+                    ],
+                    [
+                        "RNF02",
+                        "Responsividade",
+                        "Adaptação automática a diferentes tamanhos de ecrã e dispositivos, garantindo uma experiência adequada em computadores e telemóveis."
+                    ],
+                    [
+                        "RNF03",
+                        "Desempenho",
+                        "Processamento das pesquisas e apresentação dos resultados num tempo razoável, evitando atrasos que comprometam a experiência do utilizador."
+                    ],
+                    [
+                        "RNF04",
+                        "Segurança",
+                        "Protecção dos dados pessoais dos utilizadores, com mecanismos de autenticação segura e prevenção do acesso não autorizado a informação privada."
+                    ],
+                    [
+                        "RNF05",
+                        "Disponibilidade",
+                        "Acesso contínuo através da Internet, permitindo a consulta e o registo de objectos a qualquer momento."
+                    ],
+                    [
+                        "RNF06",
+                        "Integridade dos dados",
+                        "Consistência e fiabilidade das informações armazenadas na base de dados, evitando perda ou corrupção de dados."
+                    ],
+                    [
+                        "RNF07",
+                        "Escalabilidade",
+                        "Concepção que permita a adição futura de novas funcionalidades e a eventual extensão a outros campi da Universidade Zambeze."
+                    ],
+                    [
+                        "RNF08",
+                        "Rastreabilidade",
+                        "Registo completo e verificável de todas as operações realizadas, desde o registo do objecto até à sua devolução."
+                    ],
+                    [
+                        "RNF09",
+                        "Manutenibilidade",
+                        "Arquitectura em camadas (rotas–serviços–ORM) e organização por funcionalidades (\"feature-based\") no frontend; utilização de TypeScript em todo o código."
+                    ],
+                ],
+
+        source: "O autor (2026).",
+            },
+        },
+        {
+
+      level: 1,
+
+      number: "4.5.",
+
+      title: "Modelação do sistema",
+
+      paragraphs: [
+                "A modelação do sistema foi realizada com recurso à UML (Unified Modeling Language), uma linguagem de modelação visual que utiliza uma notação padronizada para especificar, construir, visualizar e documentar sistemas de informação orientados a objectos (Nunes & O'Neill, 2004). A utilização da UML permite representar graficamente a estrutura e o comportamento do sistema, facilitando a comunicação entre os diferentes intervenientes no processo de desenvolvimento e assegurando que as funcionalidades do sistema estão adequadamente definidas antes da fase de implementação.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "4.5.1.",
+
+      title: "Diagrama de caso de uso",
+
+      paragraphs: [
+                "O diagrama de caso de uso tem como finalidade representar as interacções entre os actores do sistema e as funcionalidades que lhes estão disponíveis. Segundo Nunes e O'Neill (2004), este tipo de diagrama permite identificar o que o sistema faz do ponto de vista dos seus utilizadores, constituindo uma ferramenta essencial para a validação dos requisitos funcionais.",
+                "O diagrama de caso de uso do sistema UniAchados representa as funcionalidades disponíveis para os quatro actores identificados. O visitante pode consultar a listagem de objectos encontrados e efectuar pesquisas. O membro da comunidade, após autenticação, pode comunicar perdas, pesquisar objectos, receber notificações, submeter reclamações e apresentar o código QR para levantamento. O operador da AEUNIZA pode registar objectos encontrados, avaliar reclamações, confirmar entregas e gerir os objectos em custódia. O administrador pode gerir utilizadores, categorias e consultar estatísticas da plataforma.",
+            ],
+
+      figure: {
+
+        number: "Figura 5",
+
+        title: "Diagrama de caso de uso",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui o diagrama de caso de uso com os quatro actores (Visitante, Membro da Comunidade, Operador AEUNIZA, Administrador) e as respectivas funcionalidades.]",
+            },
+
+      trailingParagraphs: [
+                "Para os casos de uso mais representativos do sistema, apresentam-se de seguida as respectivas especificações detalhadas.",
+            ],
+
+      useCaseTables: [
+                {
+
+          number: "Tabela 3",
+
+          title: "Caso de Uso: Registar Objecto Encontrado [RF05]",
+
+          rows: [
+                        [
+                            "Descrição",
+                            "Permite ao operador da AEUNIZA registar na plataforma um objecto que foi encontrado e entregue à associação."
+                        ],
+                        [
+                            "Actor principal",
+                            "Operador AEUNIZA"
+                        ],
+                        [
+                            "Actor secundário",
+                            "Sistema"
+                        ],
+                        [
+                            "Pré-condições",
+                            "O operador deve estar autenticado no sistema com permissões de operador AEUNIZA."
+                        ],
+                        [
+                            "Pós-condição",
+                            "O objecto é registado na base de dados e publicado na listagem pública da plataforma."
+                        ],
+                        [
+                            "Fluxo principal",
+                            "1. O operador acede à funcionalidade de registo de objectos encontrados. 2. O operador preenche os campos obrigatórios: descrição, categoria, local e data. 3. O operador carrega uma fotografia do objecto. 4. O operador define as perguntas de verificação de propriedade. 5. O operador submete o registo. 6. O sistema valida os dados introduzidos. 7. O sistema armazena o registo e publica o objecto na listagem pública. 8. O sistema verifica correspondências e gera notificações automáticas."
+                        ],
+                        [
+                            "Fluxo alternativo",
+                            "6a. O operador não preenche campos obrigatórios. O sistema apresenta mensagem de erro indicando os campos em falta. O operador corrige os dados e repete a submissão."
+                        ],
+                    ],
+
+          source: "O autor (2026).",
+                },
+                {
+
+          number: "Tabela 4",
+
+          title: "Caso de Uso: Pesquisar Objectos [RF04]",
+
+          rows: [
+                        [
+                            "Descrição",
+                            "Permite a qualquer utilizador pesquisar objectos encontrados registados na plataforma."
+                        ],
+                        [
+                            "Actor principal",
+                            "Visitante / Membro da Comunidade"
+                        ],
+                        [
+                            "Actor secundário",
+                            "Sistema"
+                        ],
+                        [
+                            "Pré-condições",
+                            "O utilizador deve ter acesso à plataforma. Não é obrigatória a autenticação."
+                        ],
+                        [
+                            "Pós-condição",
+                            "O sistema apresenta os resultados da pesquisa com os objectos correspondentes."
+                        ],
+                        [
+                            "Fluxo principal",
+                            "1. O utilizador acede à funcionalidade de pesquisa de objectos. 2. O utilizador introduz os critérios de pesquisa (categoria, localização, data, palavras-chave). 3. O sistema processa os critérios e consulta a base de dados. 4. O sistema apresenta a lista de objectos correspondentes. 5. O utilizador pode seleccionar um objecto para visualizar os seus detalhes."
+                        ],
+                        [
+                            "Fluxo alternativo",
+                            "4a. Nenhum objecto corresponde aos critérios introduzidos. O sistema informa que não foram encontrados resultados compatíveis."
+                        ],
+                    ],
+
+          source: "O autor (2026).",
+                },
+                {
+
+          number: "Tabela 5",
+
+          title: "Caso de Uso: Verificar Propriedade e Submeter Reclamação [RF08]",
+
+          rows: [
+                        [
+                            "Descrição",
+                            "Permite ao membro da comunidade submeter um pedido de reclamação, respondendo a perguntas de verificação."
+                        ],
+                        [
+                            "Actor principal",
+                            "Membro da Comunidade"
+                        ],
+                        [
+                            "Actor secundário",
+                            "Sistema"
+                        ],
+                        [
+                            "Pré-condições",
+                            "O utilizador deve estar autenticado. O objecto deve encontrar-se no estado \"em custódia\"."
+                        ],
+                        [
+                            "Pós-condição",
+                            "O pedido de reclamação é registado com o estado \"pendente de avaliação\" e o operador da AEUNIZA é notificado."
+                        ],
+                        [
+                            "Fluxo principal",
+                            "1. O utilizador visualiza os detalhes de um objecto e selecciona a opção de reclamação. 2. O sistema apresenta as perguntas de verificação de propriedade. 3. O utilizador responde às perguntas de verificação. 4. O utilizador submete o pedido de reclamação. 5. O sistema regista a reclamação com o estado \"pendente de avaliação\". 6. O sistema notifica o operador da AEUNIZA sobre a nova reclamação."
+                        ],
+                        [
+                            "Fluxo alternativo",
+                            "3a. O utilizador não responde a todas as perguntas obrigatórias. O sistema solicita o preenchimento completo antes da submissão."
+                        ],
+                    ],
+
+          source: "O autor (2026).",
+                },
+                {
+
+          number: "Tabela 6",
+
+          title: "Caso de Uso: Avaliar Reclamação [RF09]",
+
+          rows: [
+                        [
+                            "Descrição",
+                            "Permite ao operador da AEUNIZA analisar as respostas de verificação e decidir sobre a aprovação ou rejeição."
+                        ],
+                        [
+                            "Actor principal",
+                            "Operador AEUNIZA"
+                        ],
+                        [
+                            "Actor secundário",
+                            "Sistema"
+                        ],
+                        [
+                            "Pré-condições",
+                            "O operador deve estar autenticado. Deve existir reclamação com estado \"pendente de avaliação\"."
+                        ],
+                        [
+                            "Pós-condição",
+                            "A reclamação é actualizada para \"aprovada\" ou \"rejeitada\". Se aprovada, é gerado um código QR."
+                        ],
+                        [
+                            "Fluxo principal",
+                            "1. O operador acede à lista de reclamações pendentes. 2. O operador selecciona uma reclamação para avaliação. 3. O sistema apresenta as respostas do reclamante e as respostas esperadas. 4. O operador compara as respostas e decide aprovar a reclamação. 5. O sistema actualiza o estado para \"aprovada\". 6. O sistema gera automaticamente um código QR associado. 7. O sistema notifica o reclamante sobre a aprovação e disponibiliza o código QR."
+                        ],
+                        [
+                            "Fluxo alternativo",
+                            "4a. O operador verifica que as respostas são insuficientes ou incorrectas. O operador rejeita a reclamação. O sistema actualiza o estado para \"rejeitada\" e notifica o utilizador."
+                        ],
+                    ],
+
+          source: "O autor (2026).",
+                },
+                {
+
+          number: "Tabela 7",
+
+          title: "Caso de Uso: Processar Levantamento via Código QR [RF10, RF11]",
+
+          rows: [
+                        [
+                            "Descrição",
+                            "Permite ao operador da AEUNIZA confirmar a entrega do objecto através da leitura do código QR."
+                        ],
+                        [
+                            "Actor principal",
+                            "Operador AEUNIZA"
+                        ],
+                        [
+                            "Actor secundário",
+                            "Membro da Comunidade, Sistema"
+                        ],
+                        [
+                            "Pré-condições",
+                            "A reclamação deve estar no estado \"aprovada\". O reclamante deve apresentar o código QR válido."
+                        ],
+                        [
+                            "Pós-condição",
+                            "O levantamento é registado com os dados do reclamante, data e hora. O objecto passa ao estado \"devolvido\"."
+                        ],
+                        [
+                            "Fluxo principal",
+                            "1. O reclamante apresenta-se na sede da AEUNIZA com o código QR. 2. O operador acede à funcionalidade de leitura de código QR. 3. O operador efectua a leitura do código QR. 4. O sistema valida o código QR e apresenta os dados da reclamação. 5. O operador confirma a entrega do objecto. 6. O sistema regista o levantamento com a identificação, data e hora. 7. O sistema actualiza o estado do objecto para \"devolvido\"."
+                        ],
+                        [
+                            "Fluxo alternativo",
+                            "O código QR é inválido ou expirado. O sistema apresenta mensagem de erro. O levantamento não é processado."
+                        ],
+                    ],
+
+          source: "O autor (2026).",
+                },
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "4.5.2.",
+
+      title: "Diagrama de entidade-relacionamento",
+
+      paragraphs: [
+                "O diagrama de entidade-relacionamento (ER) é uma representação gráfica que ilustra as entidades de um sistema e os relacionamentos existentes entre elas, sendo amplamente utilizado na fase de modelação de dados para auxiliar na concepção e estruturação de bases de dados relacionais. Segundo Elmasri e Navathe (2011), o diagrama ER permite uma visão conceptual dos dados que facilita a comunicação entre analistas e programadores durante o desenvolvimento de sistemas de informação.",
+            ],
+
+      figure: {
+
+        number: "Figura 6",
+
+        title: "Diagrama de Entidade-Relacionamento",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui o diagrama ER com as entidades do sistema (Utilizador, Objecto, Reclamação, Levantamento, Categoria, etc.) e os respectivos relacionamentos.]",
+            },
+        },
+        { level: 1, number: "4.6.", title: "Arquitectura de sistemas web", paragraphs: []
+        },
+        {
+
+      level: 2,
+
+      number: "4.6.1.",
+
+      title: "Modelo cliente-servidor",
+
+      paragraphs: [
+                "O modelo cliente-servidor é um paradigma computacional que separa clientes e servidores interligados entre si, geralmente através de uma rede de computadores: cada cliente pode enviar requisições de dados a um servidor conectado e aguardar a resposta, enquanto o servidor aceita tais requisições, processa-as e devolve o resultado ao cliente. Este modelo surgiu como alternativa ao paradigma centralizado (baseado em mainframe), promovendo a descentralização dos dados e do processamento entre múltiplas máquinas interligadas em rede.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "4.6.2.",
+
+      title: "Arquitectura em camadas (frontend, backend, base de dados)",
+
+      paragraphs: [
+                "A arquitectura em três camadas (three-tier architecture) é um refinamento do modelo cliente-servidor que separa a aplicação em três componentes distintos e independentes:",
+            ],
+
+      list: [
+                "Camada de apresentação (frontend): responsável pela interface do utilizador e pela interacção com o mesmo, sendo geralmente executada em máquinas clientes, como computadores ou dispositivos móveis.",
+                "Camada de aplicação/lógica (backend): também conhecida como camada de negócio, é onde reside a lógica da aplicação, processando as regras de negócio e determinando como os dados devem ser manipulados.",
+                "Camada de gestão de dados (base de dados): responsável pelo armazenamento e pela recuperação dos dados, processando as consultas vindas da camada de aplicação e devolvendo os resultados correspondentes.",
+            ],
+
+      trailingParagraphs: [
+                "Segundo Sommerville (2016), esta separação de responsabilidades favorece a manutenção, a modularidade e a escalabilidade dos sistemas, permitindo que cada camada evolua de forma relativamente independente das restantes.",
+            ],
+        },
+        { level: 1, number: "4.7.", title: "Ferramentas e tecnologias utilizadas", paragraphs: []
+        },
+        {
+
+      level: 2,
+
+      number: "4.7.1.",
+
+      title: "Tecnologias",
+
+      paragraphs: [
+                "As tecnologias referem-se às linguagens, frameworks e sistemas que compõem directamente o sistema desenvolvido:",
+            ],
+
+      list: [
+                "Next.js: framework de desenvolvimento web de código aberto, baseado em React e mantido pela empresa Vercel, utilizado para a criação de aplicações full-stack rápidas e optimizadas para motores de busca (SEO).",
+                "HTML: linguagem de marcação padrão, utilizada como base estrutural de praticamente todas as páginas e aplicações web na Internet.",
+                "Tailwind CSS: framework de CSS utilitário empregue para estilizar a interface do sistema de forma ágil e consistente, com foco em design responsivo (mobile-first). Esta característica é particularmente relevante considerando que uma parcela significativa dos utilizadores acede ao sistema através de telemóveis.",
+                "Node.js: ambiente de execução (runtime) JavaScript no lado do servidor, responsável por executar o backend da aplicação.",
+                "MySQL: sistema de gestão de bases de dados relacional que permite armazenar de forma estruturada as informações relativas aos utilizadores, aos objectos registados, às reclamações, às mensagens e ao histórico de devoluções.",
+            ],
+        },
+        {
+
+      level: 2,
+
+      number: "4.7.2.",
+
+      title: "Ferramentas",
+
+      paragraphs: [
+                "As ferramentas referem-se aos programas de apoio utilizados durante o processo de desenvolvimento, mas que não fazem parte do sistema final entregue ao utilizador:",
+            ],
+
+      list: [
+                "Visual Studio Code (VS Code): editor de código amplamente utilizado, com suporte para as linguagens e tecnologias adoptadas no projecto, apoiando a gestão dos ficheiros e do código-fonte.",
+                "npm (Node Package Manager): gestor de pacotes utilizado para a instalação e a gestão das bibliotecas e dependências do projecto.",
+                "Lucidchart e Draw.io: ferramentas gratuitas utilizadas para a elaboração de diagramas UML, empregues na fase de modelação e documentação do sistema.",
+            ],
+
+      note: "Resolvido o \"[REVER]\" do rascunho: mantive \"Draw.io\" (a ferramenta real é draw.io / diagrams.net); \"Draw.i\" não existe e era, com quase certeza, um erro de transcrição.",
+        },
+        {
+
+      level: 1,
+
+      number: "4.8.",
+
+      title: "Demonstração das interfaces do sistema",
+
+      paragraphs: [
+                "Nesta secção são apresentadas as interfaces do sistema UniAchados e as descrições das funcionalidades de cada ecrã. As interfaces foram desenvolvidas com atenção à usabilidade e à acessibilidade, procurando oferecer uma experiência de utilização intuitiva e adaptável a diferentes dispositivos.",
+            ],
+
+      figure: {
+
+        number: "Figura 7",
+
+        title: "Interface de início de sessão",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui a captura de ecrã da interface de login.]",
+            },
+        },
+        {
+
+      level: 2,
+
+      number: "4.8.1.",
+
+      title: "Interface de pesquisa do objecto",
+
+      paragraphs: [
+                "A interface de pesquisa permite ao utilizador procurar objectos encontrados que se encontram registados na plataforma. Os filtros disponíveis incluem a categoria do objecto, o local onde foi encontrado, a data e as palavras-chave. Os resultados são apresentados com a fotografia do objecto, a descrição resumida, o local e a data do achado, permitindo ao utilizador identificar rapidamente os objectos que possam corresponder aos seus pertences.",
+            ],
+
+      figure: {
+
+        number: "Figura 8",
+
+        title: "Interface de pesquisa do objecto",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui a captura de ecrã da interface de pesquisa, com os filtros e a listagem de resultados.]",
+            },
+        },
+        {
+
+      level: 2,
+
+      number: "4.8.2.",
+
+      title: "Interface de verificação de propriedade",
+
+      paragraphs: [
+                "A interface de verificação de propriedade é apresentada quando um membro da comunidade submete uma reclamação sobre um objecto encontrado. O sistema exibe as perguntas de verificação definidas pela AEUNIZA no momento do registo do objecto, solicitando ao reclamante que forneça informações específicas que permitam confirmar a sua titularidade sobre o objecto.",
+            ],
+
+      figure: {
+
+        number: "Figura 9",
+
+        title: "Interface de verificação de propriedade",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui a captura de ecrã do formulário de perguntas de verificação.]",
+            },
+        },
+        {
+
+      level: 2,
+
+      number: "4.8.3.",
+
+      title: "Interface de comunicação de perda de objecto",
+
+      paragraphs: [
+                "A interface de comunicação de perda permite ao membro da comunidade registar a perda de um objecto pessoal. O formulário solicita a descrição do objecto, a categoria, o local provável da perda e a data aproximada. Após a submissão, o sistema verifica automaticamente se existem objectos encontrados compatíveis e, caso existam, notifica o utilizador.",
+            ],
+
+      figure: {
+
+        number: "Figura 10",
+
+        title: "Interface de comunicação de perda de objecto",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui a captura de ecrã do formulário de comunicação de perda.]",
+            },
+        },
+        {
+
+      level: 2,
+
+      number: "4.8.4.",
+
+      title: "Interface do painel de gestão do operador AEUNIZA",
+
+      paragraphs: [
+                "O painel de gestão do operador AEUNIZA centraliza as funcionalidades de gestão operacional da plataforma. A partir deste painel, o operador pode registar novos objectos encontrados, visualizar e avaliar as reclamações pendentes, efectuar a leitura de códigos QR para confirmar levantamentos, e acompanhar o estado dos objectos em custódia, incluindo a gestão dos prazos de retenção.",
+            ],
+
+      figure: {
+
+        number: "Figura 11",
+
+        title: "Interface do painel de gestão do operador AEUNIZA",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui a captura de ecrã do painel de gestão do operador.]",
+            },
+
+      trailingParagraphs: [
+                "Após a aprovação de uma reclamação pela AEUNIZA, o sistema gera automaticamente um código QR associado à reclamação aprovada. Esta interface apresenta o código QR ao reclamante, juntamente com as informações relevantes de identificação do objecto, dados da reclamação e instruções para o levantamento na sede da AEUNIZA.",
+            ],
+
+      figure2: {
+
+        number: "Figura 12",
+
+        title: "Interface de leitura do código QR",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui a captura de ecrã da interface de leitura do código QR.]",
+            },
+        },
+        {
+
+      level: 2,
+
+      number: "4.8.5.",
+
+      title: "Interface do painel administrativo",
+
+      paragraphs: [
+                "O painel administrativo permite ao administrador do sistema acompanhar as estatísticas de utilização da plataforma. São apresentadas informações como o número total de objectos registados, o número de objectos devolvidos, a taxa de recuperação, os locais com maior incidência de perdas e os períodos de maior actividade. Este painel disponibiliza também funcionalidades de gestão de utilizadores e de categorias de objectos.",
+            ],
+
+      figure: {
+
+        number: "Figura 13",
+
+        title: "Interface do painel administrativo",
+
+        source: "O autor (2026).",
+
+        placeholder: "[ESPAÇO PARA IMAGEM — inserir aqui a captura de ecrã do painel administrativo, com as estatísticas da plataforma.]",
+            },
+        },
+    ],
+
+  references: [
+        {
+
+      note: "Confirmar as referências completas de: Sommerville (2016); Nunes & O'Neill (2004); Elmasri & Navathe (2011), antes de as incluir na lista final de referências bibliográficas.",
+        },
+    ],
+};
+
+
+
+/**
+
+ * CAPÍTULO V: CONCLUSÕES E SUGESTÕES
+
+ */
+
+const capituloV = {
+
+  chapter: "CAPÍTULO V: CONCLUSÕES E SUGESTÕES",
+
+  sections: [
+        {
+
+      level: 1,
+
+      number: "5.1.",
+
+      title: "Conclusões",
+
+      paragraphs: [
+                "O presente trabalho teve como propósito o desenvolvimento do UniAchados, um sistema web para a gestão centralizada de objectos perdidos e achados na Universidade Zambeze, tendo em vista a substituição dos métodos informais actualmente utilizados por um processo digital, organizado, transparente e acessível a toda a comunidade académica.",
+                "Ao longo do trabalho, foi possível identificar, através da revisão de literatura e da aplicação de questionários à comunidade académica e à AEUNIZA, que a ausência de um mecanismo centralizado de gestão de objectos perdidos constitui um problema recorrente, gerando baixas taxas de devolução, exposição desnecessária de dados pessoais e desgaste emocional e financeiro para os membros da comunidade universitária. Esta constatação confirmou a pertinência do problema de investigação inicialmente formulado e reforçou a necessidade de uma solução tecnológica adaptada à realidade da instituição.",
+                "O desenvolvimento do sistema, conduzido através da metodologia ágil Scrum e organizado em quatro Sprints, permitiu a implementação progressiva das funcionalidades essenciais definidas nos requisitos funcionais e não funcionais, nomeadamente o registo e a pesquisa de objectos, a comunicação de perdas, a sugestão automática de correspondências, o mecanismo de verificação de propriedade, a geração de códigos QR para o processo de levantamento e o painel administrativo com estatísticas de utilização.",
+                "A escolha da AEUNIZA como entidade de custódia e mediação demonstrou-se adequada, na medida em que confere ao sistema legitimidade institucional e proximidade com a massa estudantil, características que os canais informais anteriormente utilizados não possuíam. Do mesmo modo, a introdução de mecanismos de verificação de propriedade e de confirmação de entrega via código QR trouxe ao processo um nível de rastreabilidade e segurança inexistente nos métodos tradicionais, respondendo directamente à questão central que orientou esta investigação.",
+                "Face ao exposto, considera-se que os objectivos geral e específicos definidos no Capítulo I foram alcançados: foram identificadas as principais dificuldades da comunidade académica na recuperação de objectos perdidos, foi estruturada uma base de dados centralizada, foram levantados e implementados os requisitos essenciais da plataforma, e foi desenvolvido um sistema funcional capaz de permitir o registo, a pesquisa, a notificação e a reclamação de objectos. Adicionalmente, os resultados obtidos suportam a hipótese formulada, segundo a qual a implementação de um sistema web centralizado tende a aumentar a taxa de recuperação de objectos e a satisfação da comunidade académica, quando comparada aos métodos informais anteriormente praticados.",
+                "Importa, no entanto, reconhecer algumas limitações do trabalho. O sistema foi validado num contexto de desenvolvimento e testes internos, não tendo ainda sido submetido a uma utilização prolongada em ambiente de produção, pelo que os indicadores de taxa de recuperação e satisfação apresentados no painel administrativo carecem de confirmação em condições reais de uso ao longo do tempo. Do mesmo modo, aspectos como os pagamentos electrónicos, a videovigilância e as aplicações móveis nativas foram deliberadamente excluídos do âmbito deste trabalho, conforme definido na delimitação temática, podendo constituir extensões relevantes em trabalhos futuros.",
+            ],
+        },
+        {
+
+      level: 1,
+
+      number: "5.2.",
+
+      title: "Sugestões e trabalhos futuros",
+
+      paragraphs: [
+                "Com base nos resultados alcançados e nas limitações identificadas, sugerem-se as seguintes linhas de acção e de desenvolvimento futuro:",
+            ],
+
+      list: [
+                "Implementação em ambiente de produção e monitorização contínua: recomenda-se a disponibilização efectiva do UniAchados à comunidade académica da Universidade Zambeze, acompanhada de um período de monitorização que permita validar, com dados reais, a taxa de recuperação de objectos e o nível de satisfação dos utilizadores.",
+                "Desenvolvimento de aplicação móvel nativa: de forma a complementar a versão web responsiva, poderá ser desenvolvida uma aplicação móvel dedicada, aumentando a acessibilidade e a comodidade de utilização, sobretudo para o registo imediato de perdas e a consulta de notificações.",
+                "Extensão a outros campi da Universidade Zambeze: tal como previsto no requisito de escalabilidade (RNF07), recomenda-se a expansão futura do sistema a outros campi da instituição, promovendo a uniformização do processo de gestão de perdidos e achados a nível institucional.",
+                "Integração de mecanismos de reconhecimento de imagem mais avançados: o aperfeiçoamento dos algoritmos de correspondência entre objectos perdidos e achados, eventualmente com recurso a técnicas de visão computacional, poderá aumentar a precisão das sugestões automáticas geradas pelo sistema.",
+                "Estudo de viabilidade para pagamentos electrónicos: em trabalhos futuros, poderá ser avaliada a introdução de taxas simbólicas ou incentivos geridos digitalmente, associados, por exemplo, à devolução de determinados tipos de objectos, contribuindo para a sustentabilidade financeira da própria AEUNIZA enquanto entidade custodiante.",
+                "Realização de auditorias periódicas de segurança: recomenda-se que, após a implementação, sejam realizadas avaliações regulares de segurança e testes de penetração, de modo a assegurar a continuidade da protecção dos dados pessoais dos utilizadores, em conformidade com os princípios da Tríade CIA discutidos no Capítulo II.",
+                "Estudos de replicação noutras instituições de ensino superior: dado o carácter genérico do modelo de gestão proposto, sugere-se que trabalhos académicos futuros explorem a aplicabilidade do UniAchados, ou de sistemas semelhantes, noutras instituições de ensino superior moçambicanas, contribuindo para a consolidação de boas práticas na gestão digital de objectos perdidos e achados no país.",
+            ],
+        },
+    ],
+};
+
+
+
+module.exports = { capituloI, capituloII, capituloIII, capituloIV, capituloV
+};
+
+
+
+// Execução directa: imprime os capítulos formatados no terminal
+
+if (require.main === module) {
+
+  const printTable = (t) => {
+
+    console.log(`\n[${t.number
+            }: ${t.title
+            }
+        ]`);
+
+    if (t.columns) console.log(t.columns.join(" | "));
+
+    t.rows.forEach((r) => console.log(r.join(" | ")));
+
+    console.log(`Fonte: ${t.source
+        }`);
+
+    if (t.note) console.log(`Nota: ${t.note
+        }`);
+    };
+
+  const printFigure = (f) => {
+
+    console.log(`\n[${f.number
+            }: ${f.title
+            } — Fonte: ${f.source
+            }
+        ]`);
+
+    console.log(f.placeholder);
+    };
+
+  const printBlock = (b) => {
+
+    if (b.label) console.log(`\n${b.label
+        }`);
+
+    if (b.paragraphs) b.paragraphs.forEach((p) => console.log(`\n${p
+        }`));
+
+    if (b.definitionList) b.definitionList.forEach((d) => console.log(`- ${d.term
+        }: ${d.definition
+        }`));
+
+    if (b.list) b.list.forEach((li) => console.log(`- ${li
+        }`));
+
+    if (b.numberedList) b.numberedList.forEach((li, i) => console.log(`${i + 1
+        }. ${li
+        }`));
+
+    if (b.trailingParagraphs) b.trailingParagraphs.forEach((p) => console.log(`\n${p
+        }`));
+
+    if (b.closingParagraphs) b.closingParagraphs.forEach((p) => console.log(`\n${p
+        }`));
+
+    if (b.moreParagraphs) b.moreParagraphs.forEach((p) => console.log(`\n${p
+        }`));
+
+    if (b.evenMoreParagraphs) b.evenMoreParagraphs.forEach((p) => console.log(`\n${p
+        }`));
+
+    if (b.finalParagraphs) b.finalParagraphs.forEach((p) => console.log(`\n${p
+        }`));
+
+    [
+            "table",
+            "tables",
+            "tables2",
+            "tables3",
+            "tables4",
+            "tables5"
+        ].forEach((key) => {
+
+      const val = b[key
+            ];
+
+      if (!val) return;
+
+      if (Array.isArray(val)) val.forEach(printTable);
+
+      else printTable(val);
+        });
+
+    if (b.useCaseTables) b.useCaseTables.forEach(printTable);
+
+    if (b.figure) printFigure(b.figure);
+
+    if (b.figure2) printFigure(b.figure2);
+
+    if (b.figures) b.figures.forEach(printFigure);
+
+    if (b.subsections) b.subsections.forEach(printBlock);
+    };
+
+  const printChapter = (cap) => {
+
+    console.log(cap.chapter.toUpperCase());
+
+    if (cap.intro) cap.intro.forEach((p) => console.log(`\n${p
+        }`));
+
+    for (const s of cap.sections) {
+
+      console.log(`\n${s.number
+            } ${s.title
+            }`);
+
+      printBlock(s);
+        }
+    };
+
+  printChapter(capituloI);
+
+  console.log("\n\n");
+
+  printChapter(capituloII);
+
+  console.log("\n\n");
+
+  printChapter(capituloIII);
+
+  console.log("\n\n");
+
+  printChapter(capituloIV);
+
+  console.log("\n\n");
+
+  printChapter(capituloV);
+}

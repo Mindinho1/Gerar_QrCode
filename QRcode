@@ -1,0 +1,17 @@
+import qrcode
+
+url = "http://172.31.50.114:3000"
+img = qrcode.make(url)
+img.save("qrcode_app.png")
+
+const QRCode = require('qrcode');
+
+QRCode.toFile('qrcode_app.png', 'http://172.31.50.114:3000', {
+  color: {
+    dark: '#000000',  ponto preto
+    light: '#FFFFFF'   fundo branco
+  }
+}, function (err) {
+  if (err) throw err;
+  console.log('QR Code gerado com sucesso!');
+});
