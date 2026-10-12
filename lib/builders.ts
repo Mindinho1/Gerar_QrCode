@@ -28,10 +28,20 @@ export interface WhatsAppData {
   message?: string;
 }
 
-export type QRType = 'url' | 'vcard' | 'tel' | 'email' | 'whatsapp' | 'wifi' | 'text';
+export type QRType =
+  | 'whatsapp'
+  | 'instagram'
+  | 'facebook'
+  | 'x'
+  | 'url'
+  | 'vcard'
+  | 'tel'
+  | 'email'
+  | 'text'
+  | 'wifi';
 
 /**
- * Normaliza e constrói a URL
+ * Normaliza e constrói a URL genérica
  */
 export function buildUrlPayload(url: string): string {
   const trimmed = url.trim();
@@ -40,6 +50,62 @@ export function buildUrlPayload(url: string): string {
     return `https://${trimmed}`;
   }
   return trimmed;
+}
+
+/**
+ * Normaliza link oficial de Instagram (evita URLs longas para manter o QR limpo)
+ */
+export function buildInstagramPayload(input: string): string {
+  const clean = input.trim().replace(/^@/, '');
+  if (!clean) return '';
+  if (/^https?:\/\/(www\.)?instagram\.com\//i.test(clean)) {
+    return clean;
+  }
+  return `https://instagram.com/${clean}`;
+}
+
+/**
+ * Normaliza link oficial de WhatsApp (wa.me)
+ */
+export function buildWhatsAppPayload(data: WhatsAppData | string): string {
+  if (typeof data === 'string') {
+    let clean = data.trim().replace(/[^0-9]/g, '');
+    if (!clean) return '';
+    return `https://wa.me/${clean}`;
+  }
+
+  let phone = data.phone.trim().replace(/[^0-9]/g, '');
+  if (!phone) return '';
+
+  const url = new URL(`https://wa.me/${phone}`);
+  if (data.message && data.message.trim()) {
+    url.searchParams.set('text', data.message.trim());
+  }
+  return url.toString();
+}
+
+/**
+ * Normaliza link oficial de Facebook
+ */
+export function buildFacebookPayload(input: string): string {
+  const clean = input.trim();
+  if (!clean) return '';
+  if (/^https?:\/\/(www\.)?facebook\.com\//i.test(clean) || /^https?:\/\/fb\.me\//i.test(clean)) {
+    return clean;
+  }
+  return `https://facebook.com/${clean.replace(/^@/, '')}`;
+}
+
+/**
+ * Normaliza link oficial do X (Twitter)
+ */
+export function buildXPayload(input: string): string {
+  const clean = input.trim().replace(/^@/, '');
+  if (!clean) return '';
+  if (/^https?:\/\/(www\.)?(x|twitter)\.com\//i.test(clean)) {
+    return clean;
+  }
+  return `https://x.com/${clean}`;
 }
 
 /**
@@ -76,7 +142,7 @@ export function buildTelPayload(phone: string): string {
 }
 
 /**
- * Constrói payload de Email com assunto e corpo opcionais
+ * Constrói payload de Email
  */
 export function buildEmailPayload(data: EmailData): string {
   const to = data.to.trim();
@@ -91,21 +157,7 @@ export function buildEmailPayload(data: EmailData): string {
 }
 
 /**
- * Constrói payload de WhatsApp (link wa.me)
- */
-export function buildWhatsAppPayload(data: WhatsAppData): string {
-  let phone = data.phone.trim().replace(/[^0-9]/g, '');
-  if (!phone) return '';
-
-  const url = new URL(`https://wa.me/${phone}`);
-  if (data.message && data.message.trim()) {
-    url.searchParams.set('text', data.message.trim());
-  }
-  return url.toString();
-}
-
-/**
- * Constrói payload de Wi-Fi no padrão universal (WIFI:T:WPA;S:nome;P:senha;;)
+ * Constrói payload de Wi-Fi
  */
 export function buildWifiPayload(data: WifiData): string {
   const ssid = (data.ssid || '').trim();
@@ -115,7 +167,6 @@ export function buildWifiPayload(data: WifiData): string {
   const pass = (data.password || '').trim();
   const hidden = data.hidden ? 'true' : 'false';
 
-  // Escapar caracteres especiais no SSID e senha conforme especificação MECARD/WIFI (\, ;, :, ")
   const escapeWifi = (str: string) => str.replace(/([\\;,:"])/g, '\\$1');
 
   if (enc === 'nopass') {
@@ -130,4 +181,30 @@ export function buildWifiPayload(data: WifiData): string {
  */
 export function buildTextPayload(text: string): string {
   return text.trim();
+}
+
+/**
+ * Construtor universal para qualquer item de QR code
+ */
+export function buildPayloadForQRItem(type: QRType, value: string): string {
+  switch (type) {
+    case 'whatsapp':
+      return buildWhatsAppPayload(value);
+    case 'instagram':
+      return buildInstagramPayload(value);
+    case 'facebook':
+      return buildFacebookPayload(value);
+    case 'x':
+      return buildXPayload(value);
+    case 'url':
+      return buildUrlPayload(value);
+    case 'tel':
+      return buildTelPayload(value);
+    case 'email':
+      return buildEmailPayload({ to: value });
+    case 'text':
+      return buildTextPayload(value);
+    default:
+      return value.trim();
+  }
 }
