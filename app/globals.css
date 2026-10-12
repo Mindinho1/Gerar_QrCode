@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* =====================================================================
    SISTEMA DE DESIGN & PALETA DE CORES (60% - 30% - 10%)
    Primary (60%): Blanco #FCFFFF

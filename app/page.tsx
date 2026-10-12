@@ -1,413 +1,388 @@
 'use client';
 
-import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-import { ModelCardPicker } from '@/components/ModelCardPicker';
-import { CardFormEditor } from '@/components/CardFormEditor';
-import { ModelId, CardFormData, CARD_MODELS } from '@/lib/cardModels';
-
-const CardLivePreview = dynamic(
-  () => import('@/components/CardLivePreview').then((mod) => mod.CardLivePreview),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="preview-card-wrapper flex items-center justify-center p-12 text-slate-400">
-        Carregando pré-visualização...
-      </div>
-    ),
-  }
-);
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { Button } from '@/components/ui/Button';
 import { 
-  Sparkles, 
-  ShieldCheck, 
-  Zap, 
-  Infinity as InfinityIcon, 
+  QrCode, 
   CreditCard, 
-  Printer, 
-  FileCheck2,
+  ArrowRight, 
+  CheckCircle2, 
+  Globe, 
+  MessageSquare, 
+  UserCheck, 
+  Wifi, 
+  Phone, 
+  Mail, 
+  FileText,
+  Sparkles,
+  Download,
   Sliders,
-  CheckCircle2
+  Printer,
+  ShieldCheck,
+  ChevronRight
 } from 'lucide-react';
-
-const INITIAL_MODEL_DATA: Record<ModelId, CardFormData> = {
-  classic_card: {
-    modelId: 'classic_card',
-    qrPosition: 'back',
-    name: 'Dr. David Montoya',
-    title: 'Cirujano Plastico',
-    company: 'Torre Empresarial Capitalia',
-    subtitle: 'Medicina e Cirurgia Especializada',
-    handle: '@dr.davidmontoya',
-    idNumber: '',
-    phone: '+57 315 282 5246',
-    whatsappPhone: '573152825246',
-    email: 'contacto@davidmontoya.com',
-    website: 'https://davidmontoya.com',
-    address: 'Av. Santander # 62-39, Caldas',
-    servicesList: [],
-    monogram: 'DM',
-    primaryColor: '#182B49',
-    secondaryColor: '#FFFFFF',
-    accentColor: '#D4AF37',
-    textColor: '#182B49',
-    qrItems: [
-      {
-        id: 'qr-1',
-        type: 'whatsapp',
-        label: 'WhatsApp',
-        value: '573152825246',
-      },
-    ],
-  },
-  social_card: {
-    modelId: 'social_card',
-    qrPosition: 'back',
-    name: 'Alexandre Silva',
-    title: 'Criador de Conteúdo & Design',
-    company: 'Studio Digital',
-    subtitle: 'Conecte-se comigo nas redes sociais',
-    handle: '@alexandredesign',
-    idNumber: '',
-    phone: '+258 84 123 4567',
-    whatsappPhone: '258841234567',
-    email: 'alexandre@design.co.mz',
-    website: 'https://alexandredesign.me',
-    address: 'Maputo, Moçambique',
-    servicesList: [],
-    monogram: 'AS',
-    primaryColor: '#0F172A',
-    secondaryColor: '#1E293B',
-    accentColor: '#E1306C',
-    textColor: '#FFFFFF',
-    qrItems: [
-      {
-        id: 'qr-1',
-        type: 'instagram',
-        label: 'Instagram',
-        value: 'alexandredesign',
-      },
-      {
-        id: 'qr-2',
-        type: 'whatsapp',
-        label: 'WhatsApp',
-        value: '258841234567',
-      },
-    ],
-  },
-  dark_green_id: {
-    modelId: 'dark_green_id',
-    qrPosition: 'front',
-    name: 'Makhdoom Nouman',
-    title: 'Security Verified Member',
-    company: 'WHATSAPP OFFICIAL IDENTITY',
-    subtitle: 'Authorized Personnel',
-    handle: '@makhdoom',
-    idNumber: '98/b-2079',
-    phone: '+258 84 123 4567',
-    whatsappPhone: '258841234567',
-    email: 'makhdoom@secure.com',
-    website: 'https://wa.me/258841234567',
-    address: 'Global Hub',
-    servicesList: [],
-    monogram: 'MN',
-    primaryColor: '#060B0E',
-    secondaryColor: '#00E676',
-    accentColor: '#00E676',
-    textColor: '#FFFFFF',
-    qrItems: [
-      {
-        id: 'qr-1',
-        type: 'whatsapp',
-        label: 'WhatsApp ID',
-        value: '258841234567',
-      },
-    ],
-  },
-  gold_premium: {
-    modelId: 'gold_premium',
-    qrPosition: 'back',
-    name: 'Laurenzo Donatelli',
-    title: 'Executive Wealth Advisor',
-    company: 'Private Consulting Group',
-    subtitle: 'Serviços Financeiros Exclusivos',
-    handle: '@donatelli.vip',
-    idNumber: '',
-    phone: '+258 84 999 8888',
-    whatsappPhone: '258849998888',
-    email: 'laurenzo@donatellivip.com',
-    website: 'https://donatelli.vip',
-    address: 'Av. Julius Nyerere, Polana',
-    servicesList: [],
-    monogram: 'LD',
-    primaryColor: '#0B1220',
-    secondaryColor: '#D4AF37',
-    accentColor: '#D4AF37',
-    textColor: '#FAF6EE',
-    qrItems: [
-      {
-        id: 'qr-1',
-        type: 'url',
-        label: 'Acesso VIP',
-        value: 'https://donatelli.vip',
-      },
-    ],
-  },
-  table_tent: {
-    modelId: 'table_tent',
-    qrPosition: 'front',
-    name: 'Bistro & Lounge Gourmet',
-    title: 'Menu Digital & Wi-Fi',
-    company: 'BISTRO & LOUNGE GOURMET',
-    subtitle: 'Aponte a câmara do seu telemóvel para aceder',
-    handle: '@bistrogourmet',
-    idNumber: '',
-    phone: '+258 84 555 1234',
-    whatsappPhone: '258845551234',
-    email: 'contacto@bistrogourmet.mz',
-    website: 'https://bistrogourmet.mz/menu',
-    address: 'Zona Gastronómica, Maputo',
-    wifiSsid: 'Bistro_Gourmet_Guest',
-    servicesList: [],
-    monogram: 'BG',
-    primaryColor: '#182B49',
-    secondaryColor: '#FFFFFF',
-    accentColor: '#F59E0B',
-    textColor: '#0F172A',
-    qrItems: [
-      {
-        id: 'qr-1',
-        type: 'wifi',
-        label: 'Wi-Fi & Cardápio',
-        value: 'WIFI:T:WPA;S:Bistro_Gourmet_Guest;P:bistro2026;;',
-      },
-    ],
-  },
-  services_card: {
-    modelId: 'services_card',
-    qrPosition: 'back',
-    name: 'Júlia Strepchenkova',
-    title: 'estética e cosmetologia',
-    company: 'Clínica de Estética Avançada',
-    subtitle: 'Procedimentos faciais e corporais de alta precisão',
-    handle: 'julia.st__cosm65',
-    idNumber: '',
-    phone: '+7 (914) 089-72-22',
-    whatsappPhone: '79140897222',
-    email: 'julia.strep@estetica.com',
-    website: 'https://instagram.com/julia.st__cosm65',
-    address: 'Clínica Bella Vita, Sala 402',
-    servicesList: [
-      'Contorno e preenchimento labial',
-      'Mesoterapia e bio-revitalização facial',
-      'Lipoescultura e drenagem enzimática',
-      'Harmonização e toxina botulínica',
-    ],
-    monogram: 'JS',
-    primaryColor: '#1A4959',
-    secondaryColor: '#FAF8F3',
-    accentColor: '#D4AF37',
-    textColor: '#1F2937',
-    qrItems: [
-      {
-        id: 'qr-1',
-        type: 'instagram',
-        label: 'Instagram',
-        value: 'julia.st__cosm65',
-      },
-    ],
-  },
-};
+import { FaInstagram, FaFacebookF, FaXTwitter } from 'react-icons/fa6';
+import { ClassicoThumbnail } from '@/components/cartao/templates/Classico';
+import { PretoDouradoThumbnail } from '@/components/cartao/templates/PretoDourado';
+import { RedesThumbnail } from '@/components/cartao/templates/Redes';
+import { PlacaThumbnail } from '@/components/cartao/templates/Placa';
 
 export default function HomePage() {
-  const [selectedModel, setSelectedModel] = useState<ModelId>('classic_card');
-  const [formData, setFormData] = useState<CardFormData>(INITIAL_MODEL_DATA['classic_card']);
+  const supportedTypes = [
+    { label: 'URL / Links', icon: Globe },
+    { label: 'WhatsApp', icon: MessageSquare },
+    { label: 'Instagram', icon: FaInstagram },
+    { label: 'Facebook', icon: FaFacebookF },
+    { label: 'X (Twitter)', icon: FaXTwitter },
+    { label: 'vCard 3.0', icon: UserCheck },
+    { label: 'Rede Wi-Fi', icon: Wifi },
+    { label: 'Telefone', icon: Phone },
+    { label: 'E-mail', icon: Mail },
+    { label: 'Texto Livre', icon: FileText },
+  ];
 
-  // Handle switching model
-  const handleModelSelect = (modelId: ModelId) => {
-    setSelectedModel(modelId);
-    const template = INITIAL_MODEL_DATA[modelId];
+  const featuredModels = [
+    {
+      id: 'classic_card',
+      name: 'Cartão de Visita Clássico',
+      badge: 'Até 3 QR no Verso',
+      component: <ClassicoThumbnail />,
+    },
+    {
+      id: 'gold_premium',
+      name: 'Preto & Dourado Premium',
+      badge: 'Selo Dourado',
+      component: <PretoDouradoThumbnail />,
+    },
+    {
+      id: 'social_card',
+      name: 'Cartão Redes Sociais',
+      badge: 'Instagram + WhatsApp',
+      component: <RedesThumbnail />,
+    },
+    {
+      id: 'table_tent',
+      name: 'Placa de Mesa Vertical',
+      badge: 'Display Balcão',
+      component: <PlacaThumbnail className="max-w-[200px] mx-auto" />,
+    },
+  ];
 
-    // Preserve custom contact info if user already typed it
-    setFormData((prev) => ({
-      ...template,
-      name: prev.name !== INITIAL_MODEL_DATA[prev.modelId].name ? prev.name : template.name,
-      phone: prev.phone !== INITIAL_MODEL_DATA[prev.modelId].phone ? prev.phone : template.phone,
-      email: prev.email !== INITIAL_MODEL_DATA[prev.modelId].email ? prev.email : template.email,
-      monogram: prev.monogram !== INITIAL_MODEL_DATA[prev.modelId].monogram ? prev.monogram : template.monogram,
-      photoUrl: prev.photoUrl,
-    }));
-  };
-
-  const currentDef = CARD_MODELS.find((m) => m.id === selectedModel) || CARD_MODELS[0];
+  const steps = [
+    {
+      number: '01',
+      title: 'Escolha',
+      description: 'Selecione um QR code avulso (URL, WhatsApp, Wi-Fi...) ou um modelo de cartão pronto para gráfica.',
+      icon: Sparkles,
+    },
+    {
+      number: '02',
+      title: 'Personalize',
+      description: 'Preencha os seus dados, adicione logotipo, ajuste cores e visualize as alterações em tempo real.',
+      icon: Sliders,
+    },
+    {
+      number: '03',
+      title: 'Descarregue',
+      description: 'Obtenha ficheiros em alta resolução (PNG 1024px/2048px, SVG vetorial ou PDF 300 DPI com sangria de 3mm).',
+      icon: Download,
+    },
+  ];
 
   return (
-    <div className="main-layout">
-      {/* Background ambient lighting */}
-      <div className="ambient-glow glow-top-left" />
-      <div className="ambient-glow glow-top-right" />
+    <div className="min-h-screen flex flex-col bg-[#FCFFFF] selection:bg-[#99E1D9] selection:text-[#202C39]">
+      <Header />
 
-      {/* Header */}
-      <header className="app-header">
-        <div className="container header-inner">
-          <div className="brand-group">
-            <div className="brand-logo-badge">
-              <CreditCard size={26} className="brand-icon" />
-            </div>
-            <div>
-              <div className="brand-title-row">
-                <h1 className="brand-title">Estúdio de Cartões &amp; QR Codes</h1>
+      <main className="flex-1">
+        {/* 1. HERO SECTION */}
+        <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+              {/* Left Column: Headline, Subtitle & Buttons */}
+              <div className="lg:col-span-6 space-y-6 text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#99E1D9]/25 border border-[#99E1D9] text-[#202C39] text-xs font-bold tracking-wide">
+                  <Sparkles size={14} className="text-[#0f766e]" />
+                  <span>Estúdio de Criação & Impressão Gráfica</span>
+                </div>
+
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#202C39] tracking-tight leading-[1.12]">
+                  Crie QR codes e cartões personalizados{' '}
+                  <span className="text-[#0f766e] underline decoration-[#99E1D9] decoration-wavy decoration-2">
+                    em segundos
+                  </span>
+                </h1>
+
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+                  Gere QR codes estáticos profissionais sem expiração ou desenhe cartões de visita e placas de mesa de alta resolução prontos para impressão com sangria a 300 DPI.
+                </p>
+
+                {/* Hero 2 CTA Buttons */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                  <Link href="/qrcode">
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      icon={QrCode}
+                      className="w-full sm:w-auto bg-[#202C39] hover:bg-[#18222D] shadow-lg shadow-[#202C39]/20"
+                    >
+                      Gerar QR code
+                    </Button>
+                  </Link>
+
+                  <Link href="/cartoes">
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      icon={CreditCard}
+                      className="w-full sm:w-auto shadow-md"
+                    >
+                      Criar cartão
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Trust Badges */}
+                <div className="flex flex-wrap items-center gap-6 pt-4 text-xs font-semibold text-slate-500">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 size={16} className="text-[#0f766e]" />
+                    100% no navegador (Sem registo)
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 size={16} className="text-[#0f766e]" />
+                    Exportação 300 DPI & Sangria
+                  </span>
+                </div>
               </div>
-              <p className="brand-subtitle">
-                Gere cartões profissionais e placas com QR Codes de alta durabilidade, frente e verso, exportação PNG 300 DPI e PDF com marcas de corte.
-              </p>
+
+              {/* Right Column: Hero Showcase Image with Tiffany background block */}
+              <div className="lg:col-span-6 relative flex items-center justify-center">
+                {/* Tiffany Block behind the image */}
+                <div className="absolute w-[90%] h-[90%] rounded-3xl bg-[#99E1D9] transform -rotate-2 -translate-x-2 translate-y-3 z-0 opacity-80 shadow-xl" />
+
+                {/* Image Card Container */}
+                <div className="relative z-10 w-full max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/hero_cards.jpg"
+                    alt="Mockup de cartões de visita e placa de mesa com QR Code"
+                    className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-slate-200/80 shadow-lg flex items-center justify-between text-xs">
+                    <div>
+                      <p className="font-bold text-[#202C39]">Cartões & Placas com QR Dinâmico</p>
+                      <p className="text-[11px] text-slate-500">Prontos para gráfica ou uso digital</p>
+                    </div>
+                    <span className="bg-[#99E1D9]/40 text-[#202C39] font-bold px-2.5 py-1 rounded-xl text-[11px]">
+                      300 DPI
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-        </div>
-      </header>
-
-      {/* Main Workspace */}
-      <main className="container main-content py-8">
-        {/* Step 1: Model Selection */}
-        <section className="mb-8">
-          <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-            <div>
-              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                <Sliders size={20} className="text-indigo-600" />
-                <span>Escolha o Modelo de Cartão ou Placa</span>
-              </h2>
-              <p className="text-xs text-slate-500">
-                Selecione o formato desejado para configurar a quantidade e a posição ideal dos QR codes.
-              </p>
-            </div>
-            <div className="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full border border-indigo-200">
-              Modelo ativo: {currentDef.name}
-            </div>
-          </div>
-
-          <ModelCardPicker
-            selectedModel={selectedModel}
-            onSelect={handleModelSelect}
-          />
         </section>
 
-        {/* 2-Column Studio Grid: Editor on Left, Sticky Preview on Right */}
-        <div className="workspace-grid">
-          {/* Left Column: Form Editor */}
-          <div className="generator-column">
-            <CardFormEditor
-              formData={formData}
-              onChange={setFormData}
-            />
+        {/* 2. DOIS CARTÕES GRANDES DE ESCOLHA */}
+        <section className="py-12 bg-slate-50/70 border-y border-slate-200/70">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#202C39] tracking-tight">
+                Escolha o seu fluxo de criação
+              </h2>
+              <p className="text-sm text-slate-600 mt-2">
+                Ferramentas rápidas e dedicadas para atender às suas necessidades
+              </p>
+            </div>
 
-            {/* Informational Guidance Banner */}
-            <div className="info-banner-card mt-6">
-              <div className="info-banner-icon">
-                <Sparkles size={22} />
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Card 1: QR Code Avulso */}
+              <Link
+                href="/qrcode"
+                className="group relative bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#99E1D9] transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-[#99E1D9]/30 text-[#0f766e] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <QrCode size={32} className="stroke-[2.2]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#202C39] group-hover:text-[#0f766e] transition-colors">
+                    Gerador de QR Code Avulso
+                  </h3>
+                  <p className="text-slate-600 text-sm mt-3 leading-relaxed">
+                    Crie códigos QR individuais para WhatsApp, websites, redes sociais, vCard e redes Wi-Fi. Personalize cores, adicione o logótipo oficial e descarregue em PNG ou SVG vetorial.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-bold text-[#202C39] group-hover:text-[#0f766e]">
+                  <span>Criar QR Code Agora</span>
+                  <ArrowRight size={18} className="transform group-hover:translate-x-1.5 transition-transform" />
+                </div>
+              </Link>
+
+              {/* Card 2: Cartões e Placas */}
+              <Link
+                href="/cartoes"
+                className="group relative bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#202C39] transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-[#202C39] text-[#99E1D9] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <CreditCard size={32} className="stroke-[2.2]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#202C39] group-hover:text-[#18222D] transition-colors">
+                    Galeria de Cartões & Placas
+                  </h3>
+                  <p className="text-slate-600 text-sm mt-3 leading-relaxed">
+                    Modelos profissionais de cartões de visita clássicos, crachás tech com foto e placas de mesa verticais. Suporta até 3 QR codes em linha no verso e exportação em PDF de 300 DPI com sangria.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-bold text-[#202C39]">
+                  <span>Explorar Modelos de Cartão</span>
+                  <ArrowRight size={18} className="transform group-hover:translate-x-1.5 transition-transform" />
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. TIPOS DE QR SUPORTADOS (FAIXA EM FUNDO TIFFANY CLARO) */}
+        <section className="py-12 bg-[#99E1D9]/20 border-b border-[#99E1D9]/40">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-6">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-[#0f766e]">
+                Versatilidade Total
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#202C39] mt-1">
+                Tipos de QR Code Suportados
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+              {supportedTypes.map((t, idx) => {
+                const Icon = t.icon;
+                return (
+                  <Link
+                    key={idx}
+                    href="/qrcode"
+                    className="flex items-center gap-3 p-3.5 bg-white/90 hover:bg-white rounded-2xl border border-white/60 shadow-xs hover:shadow-md transition-all group"
+                  >
+                    <div className="w-8 h-8 rounded-xl bg-[#99E1D9]/40 text-[#202C39] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <Icon size={16} />
+                    </div>
+                    <span className="text-xs font-bold text-slate-800 truncate">
+                      {t.label}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. MODELOS EM DESTAQUE */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
               <div>
-                <h4 className="info-banner-title">
-                  Regras Técnicas de Alta Legibilidade e Impressão
-                </h4>
-                <ul className="text-xs text-slate-600 dark:text-slate-300 mt-2 space-y-1.5 list-disc pl-4">
-                  <li>
-                    <strong>Correção de Erros Nível H:</strong> Garante 30% de tolerância para manter a leitura do código intacta mesmo com o logótipo oficial no centro.
-                  </li>
-                  <li>
-                    <strong>Área Central a 20%:</strong> Ícone proporcionalmente calibrado com margem limpa para não tocar nos padrões de sincronização do QR.
-                  </li>
-                  <li>
-                    <strong>Dimensão Mínima de 20 mm:</strong> No verso de cartões 90×50 mm com até 3 QR codes em linha, cada código preserva o tamanho mínimo recomendado para qualquer câmara de smartphone.
-                  </li>
-                  <li>
-                    <strong>URLs Curtas Recomendadas:</strong> Links diretos e limpos (ex: <code>wa.me/258...</code> ou <code>instagram.com/nome</code>) produzem matrizes mais simples e rápidas de escanear.
-                  </li>
-                </ul>
+                <span className="text-xs font-extrabold uppercase tracking-widest text-[#0f766e]">
+                  Colecção de Design
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#202C39] tracking-tight mt-1">
+                  Modelos de Cartão em Destaque
+                </h2>
+                <p className="text-sm text-slate-600 mt-2">
+                  Escolha um modelo e comece a editar instantaneamente
+                </p>
               </div>
+
+              <Link href="/cartoes">
+                <Button variant="outline" size="md" icon={ArrowRight} iconPosition="right">
+                  Ver todos os modelos
+                </Button>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {featuredModels.map((item) => (
+                <Link
+                  key={item.id}
+                  href={`/cartoes/${item.id}`}
+                  className="group bg-slate-50/70 border border-slate-200 rounded-3xl p-4 flex flex-col justify-between hover:shadow-xl hover:border-slate-300 transition-all duration-300"
+                >
+                  <div className="w-full flex items-center justify-center p-2 mb-3">
+                    <div className="w-full transform group-hover:scale-[1.03] transition-transform">
+                      {item.component}
+                    </div>
+                  </div>
+
+                  <div className="pt-2 border-t border-slate-200/60">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#99E1D9]/30 text-[#0f766e]">
+                        {item.badge}
+                      </span>
+                    </div>
+                    <h4 className="text-sm font-bold text-[#202C39] group-hover:text-[#0f766e] transition-colors truncate">
+                      {item.name}
+                    </h4>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
+        </section>
 
-          {/* Right Column: Sticky Live Preview & Export */}
-          <div className="preview-column">
-            <div className="sticky-wrapper">
-              <CardLivePreview formData={formData} />
+        {/* 5. COMO FUNCIONA (3 PASSOS) */}
+        <section className="py-20 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-[#0f766e]">
+                Fluxo Simplificado
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#202C39] tracking-tight mt-1">
+                Como Funciona
+              </h2>
+              <p className="text-sm text-slate-600 mt-2">
+                Três passos simples para ter o seu material pronto para uso ou impressão
+              </p>
             </div>
-          </div>
-        </div>
 
-        {/* Comparative Models Summary Table */}
-        <section className="features-section mt-16">
-          <div className="section-header text-center">
-            <h3 className="section-title">Resumo das Especificações por Modelo</h3>
-            <p className="section-desc">Estrutura definida para máxima harmonia visual e funcionalidade</p>
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {steps.map((st, idx) => {
+                const Icon = st.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="relative bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="text-3xl font-extrabold text-[#99E1D9] font-mono">
+                          {st.number}
+                        </span>
+                        <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-[#202C39]">
+                          <Icon size={20} />
+                        </div>
+                      </div>
 
-          <div className="overflow-x-auto mt-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-            <table className="w-full text-left text-sm text-slate-600 dark:text-slate-300">
-              <thead className="bg-slate-50 dark:bg-slate-800 text-xs uppercase text-slate-700 dark:text-slate-200 font-bold border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th className="py-3 px-4">Modelo</th>
-                  <th className="py-3 px-4">Dimensões</th>
-                  <th className="py-3 px-4">Qtd. QR Codes</th>
-                  <th className="py-3 px-4">Localização dos Códigos</th>
-                  <th className="py-3 px-4">Destaque do Design</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                <tr>
-                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">Cartão de visita clássico</td>
-                  <td className="py-3 px-4 font-mono text-xs">90×50 mm</td>
-                  <td className="py-3 px-4 font-bold text-indigo-600">Até 3</td>
-                  <td className="py-3 px-4">Só no Verso</td>
-                  <td className="py-3 px-4 text-xs">Frente livre para monograma, nome e contactos</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">Cartão para redes sociais</td>
-                  <td className="py-3 px-4 font-mono text-xs">90×50 mm</td>
-                  <td className="py-3 px-4 font-bold text-pink-600">Até 3</td>
-                  <td className="py-3 px-4">Só no Verso</td>
-                  <td className="py-3 px-4 text-xs">Foco em @handle, avatar de perfil e ícones oficiais</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">Cartão ID escuro/verde</td>
-                  <td className="py-3 px-4 font-mono text-xs">90×54 mm</td>
-                  <td className="py-3 px-4 font-bold text-emerald-600">1</td>
-                  <td className="py-3 px-4">Frente</td>
-                  <td className="py-3 px-4 text-xs">Estilo Crachá WhatsApp Tech c/ circuitos neon e foto</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">Preto e dourado premium</td>
-                  <td className="py-3 px-4 font-mono text-xs">90×50 mm</td>
-                  <td className="py-3 px-4 font-bold text-amber-600">1</td>
-                  <td className="py-3 px-4">Frente ou Verso (à escolha)</td>
-                  <td className="py-3 px-4 text-xs">Paleta Obsidian / Navy com monograma dourado luxo</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">Placa de mesa vertical</td>
-                  <td className="py-3 px-4 font-mono text-xs">105×148 mm</td>
-                  <td className="py-3 px-4 font-bold text-cyan-600">1</td>
-                  <td className="py-3 px-4">Zona Central</td>
-                  <td className="py-3 px-4 text-xs">Display de balcão/mesa para leitura rápida e Wi-Fi</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">Cartão de serviços</td>
-                  <td className="py-3 px-4 font-mono text-xs">90×50 mm</td>
-                  <td className="py-3 px-4 font-bold text-teal-600">1</td>
-                  <td className="py-3 px-4">Frente ou Verso (à escolha)</td>
-                  <td className="py-3 px-4 text-xs">Divisão em 2 colunas com lista de procedimentos e bullets</td>
-                </tr>
-              </tbody>
-            </table>
+                      <h3 className="text-xl font-bold text-[#202C39] mb-2">
+                        {st.title}
+                      </h3>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        {st.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="app-footer">
-        <div className="container footer-content">
-          <p>&copy; {new Date().getFullYear()} Estúdio de Cartões &amp; QR Codes Estáticos. Construído para impressão profissional de alta fidelidade.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

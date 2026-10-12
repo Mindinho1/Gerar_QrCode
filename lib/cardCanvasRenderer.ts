@@ -213,31 +213,32 @@ async function drawClassicCardFront(
 
   // Monogram / Logo
   const mono = data.monogram || 'DM';
-  const logoSize = Math.round(44 * scale);
+  const logoRadius = Math.round(7.5 * scale);
+  const logoY = cy - 6 * scale;
 
   // Outer delicate circle
   ctx.strokeStyle = '#FFFFFF';
-  ctx.lineWidth = Math.max(1.5, scale * 0.4);
+  ctx.lineWidth = Math.max(1.5, scale * 0.25);
   ctx.beginPath();
-  ctx.arc(cx, cy - 22 * scale, logoSize / 2, 0, Math.PI * 2);
+  ctx.arc(cx, logoY, logoRadius, 0, Math.PI * 2);
   ctx.stroke();
 
   // Monogram letters
   ctx.fillStyle = '#FFFFFF';
-  ctx.font = `600 ${Math.round(20 * scale)}px "Plus Jakarta Sans", sans-serif`;
+  ctx.font = `600 ${Math.round(6.5 * scale)}px "Plus Jakarta Sans", sans-serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(mono, cx, cy - 21 * scale);
+  ctx.fillText(mono, cx, logoY);
 
   // Name
-  ctx.font = `700 ${Math.round(15 * scale)}px "Plus Jakarta Sans", sans-serif`;
+  ctx.font = `700 ${Math.round(3.6 * scale)}px "Plus Jakarta Sans", sans-serif`;
   ctx.letterSpacing = '1px';
-  ctx.fillText(data.name.toUpperCase() || 'DR. DAVID MONTOYA', cx, cy + 18 * scale);
+  ctx.fillText(data.name.toUpperCase() || 'DR. DAVID MONTOYA', cx, cy + 8 * scale);
 
   // Subtitle / Title
-  ctx.font = `400 ${Math.round(8.5 * scale)}px "Plus Jakarta Sans", sans-serif`;
+  ctx.font = `400 ${Math.round(2.2 * scale)}px "Plus Jakarta Sans", sans-serif`;
   ctx.fillStyle = 'rgba(255, 255, 255, 0.78)';
-  ctx.fillText((data.title || 'CIRUJANO PLASTICO').toUpperCase(), cx, cy + 30 * scale);
+  ctx.fillText((data.title || 'CIRUJANO PLASTICO').toUpperCase(), cx, cy + 14 * scale);
 }
 
 async function drawClassicCardBack(
@@ -255,9 +256,9 @@ async function drawClassicCardBack(
   // Navy geometric accent block at bottom right
   ctx.fillStyle = data.primaryColor || '#182B49';
   ctx.beginPath();
-  ctx.moveTo(W * 0.45, H);
+  ctx.moveTo(W * 0.65, H);
   ctx.lineTo(W, H);
-  ctx.lineTo(W, H - 24 * scale);
+  ctx.lineTo(W, H - 10 * scale);
   ctx.closePath();
   ctx.fill();
 
@@ -265,10 +266,10 @@ async function drawClassicCardBack(
   const numQrs = qrs.length || 1;
 
   if (numQrs === 1) {
-    // 1 QR Layout: Left QR Code, Right Contact info (Exactly like Dr. David Montoya Image 1)
-    const qrSize = Math.round(32 * scale);
-    const qrX = bleed + 12 * scale;
-    const qrY = (H - qrSize) / 2;
+    // 1 QR Layout: Left QR Code, Right Contact info
+    const qrSize = Math.round(20 * scale);
+    const qrX = bleed + 14 * scale;
+    const qrY = (H - qrSize) / 2 - 2 * scale;
 
     const qrCanvas = document.createElement('canvas');
     await renderQRToCanvas(qrCanvas, qrs[0], {
@@ -280,13 +281,13 @@ async function drawClassicCardBack(
 
     // Label under QR
     ctx.fillStyle = '#64748B';
-    ctx.font = `500 ${Math.round(6.5 * scale)}px "Plus Jakarta Sans", sans-serif`;
+    ctx.font = `600 ${Math.round(2.0 * scale)}px "Plus Jakarta Sans", sans-serif`;
     ctx.textAlign = 'center';
-    ctx.fillText(qrs[0].label || 'Aceder', qrX + qrSize / 2, qrY + qrSize + 7 * scale);
+    ctx.fillText(qrs[0].label || 'Aceder', qrX + qrSize / 2, qrY + qrSize + 4.5 * scale);
 
     // Vertical separator
-    ctx.strokeStyle = data.primaryColor || '#182B49';
-    ctx.lineWidth = Math.max(1, scale * 0.25);
+    ctx.strokeStyle = '#CBD5E1';
+    ctx.lineWidth = Math.max(1, scale * 0.15);
     const divX = qrX + qrSize + 10 * scale;
     ctx.beginPath();
     ctx.moveTo(divX, H * 0.22);
@@ -294,49 +295,53 @@ async function drawClassicCardBack(
     ctx.stroke();
 
     // Right Column: Contact Details
-    const textX = divX + 10 * scale;
-    let currY = H * 0.30;
+    const textX = divX + 8 * scale;
+    let currY = H * 0.32;
     ctx.textAlign = 'left';
 
+    if (data.company) {
+      ctx.fillStyle = data.primaryColor || '#182B49';
+      ctx.font = `700 ${Math.round(2.6 * scale)}px "Plus Jakarta Sans", sans-serif`;
+      ctx.fillText(data.company.toUpperCase(), textX, currY);
+      currY += 5 * scale;
+    }
     if (data.address) {
-      ctx.fillStyle = '#1E293B';
-      ctx.font = `500 ${Math.round(7.2 * scale)}px "Plus Jakarta Sans", sans-serif`;
+      ctx.fillStyle = '#475569';
+      ctx.font = `400 ${Math.round(2.0 * scale)}px "Plus Jakarta Sans", sans-serif`;
       ctx.fillText(data.address, textX, currY);
-      currY += 10 * scale;
+      currY += 4.5 * scale;
     }
     if (data.phone || data.whatsappPhone) {
-      ctx.fillStyle = '#1E293B';
-      ctx.font = `500 ${Math.round(7.2 * scale)}px "Plus Jakarta Sans", sans-serif`;
+      ctx.fillStyle = '#475569';
+      ctx.font = `500 ${Math.round(2.0 * scale)}px "Plus Jakarta Sans", sans-serif`;
       ctx.fillText(data.phone || data.whatsappPhone, textX, currY);
-      currY += 10 * scale;
+      currY += 4.5 * scale;
     }
-    if (data.handle || data.email) {
-      ctx.fillStyle = '#1E293B';
-      ctx.font = `500 ${Math.round(7.2 * scale)}px "Plus Jakarta Sans", sans-serif`;
-      ctx.fillText(data.handle || data.email, textX, currY);
-      currY += 10 * scale;
+    if (data.website || data.email) {
+      ctx.fillStyle = '#0f766e';
+      ctx.font = `500 ${Math.round(2.0 * scale)}px "Plus Jakarta Sans", sans-serif`;
+      ctx.fillText(data.website || data.email, textX, currY);
+      currY += 4.5 * scale;
     }
 
     // Small footer monogram
-    ctx.fillStyle = '#64748B';
-    ctx.font = `700 ${Math.round(7 * scale)}px "Plus Jakarta Sans", sans-serif`;
-    ctx.fillText(`${data.monogram || 'DM'} • ${data.name || ''}`, textX, H - bleed - 8 * scale);
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = `600 ${Math.round(1.8 * scale)}px "Plus Jakarta Sans", sans-serif`;
+    ctx.fillText(`${data.monogram || 'DM'} • ${data.name || ''}`, textX, H - bleed - 5 * scale);
   } else {
-    // 2 or 3 QR Layout: Organized dynamically in a row or balanced grid!
-    // Top: Mini header with Name & Title
+    // 2 or 3 QR Layout
     ctx.textAlign = 'center';
     ctx.fillStyle = data.primaryColor || '#182B49';
-    ctx.font = `700 ${Math.round(11 * scale)}px "Plus Jakarta Sans", sans-serif`;
-    ctx.fillText((data.name || 'DR. DAVID MONTOYA').toUpperCase(), W / 2, bleed + 11 * scale);
+    ctx.font = `700 ${Math.round(2.8 * scale)}px "Plus Jakarta Sans", sans-serif`;
+    ctx.fillText((data.name || 'DR. DAVID MONTOYA').toUpperCase(), W / 2, bleed + 8 * scale);
 
     ctx.fillStyle = '#64748B';
-    ctx.font = `500 ${Math.round(6.5 * scale)}px "Plus Jakarta Sans", sans-serif`;
-    ctx.fillText((data.title || 'CIRUJANO PLASTICO').toUpperCase(), W / 2, bleed + 18 * scale);
+    ctx.font = `500 ${Math.round(1.9 * scale)}px "Plus Jakarta Sans", sans-serif`;
+    ctx.fillText((data.title || 'CIRUJANO PLASTICO').toUpperCase(), W / 2, bleed + 13 * scale);
 
-    // QR Codes in row (min ~20 mm per code = ~20 * scale)
-    const qrSize = Math.round(22 * scale);
+    const qrSize = Math.round(18 * scale);
     const spacing = Math.round((W - bleed * 2 - qrSize * numQrs) / (numQrs + 1));
-    const qrY = bleed + 23 * scale;
+    const qrY = bleed + 17 * scale;
 
     for (let i = 0; i < numQrs; i++) {
       const qX = bleed + spacing * (i + 1) + qrSize * i;
@@ -347,17 +352,15 @@ async function drawClassicCardBack(
         bgColor: '#FFFFFF',
       });
 
-      // Subtle shadow box
       ctx.fillStyle = '#FFFFFF';
-      roundRect(ctx, qX - 2 * scale, qrY - 2 * scale, qrSize + 4 * scale, qrSize + 4 * scale, 3 * scale);
+      roundRect(ctx, qX - 1.5 * scale, qrY - 1.5 * scale, qrSize + 3 * scale, qrSize + 3 * scale, 2 * scale);
       ctx.fill();
 
       ctx.drawImage(qrCanvas, qX, qrY, qrSize, qrSize);
 
-      // Label below QR
       ctx.fillStyle = '#1E293B';
-      ctx.font = `600 ${Math.round(6.5 * scale)}px "Plus Jakarta Sans", sans-serif`;
-      ctx.fillText(qrs[i].label || `QR ${i + 1}`, qX + qrSize / 2, qrY + qrSize + 7.5 * scale);
+      ctx.font = `600 ${Math.round(1.8 * scale)}px "Plus Jakarta Sans", sans-serif`;
+      ctx.fillText(qrs[i].label || `QR ${i + 1}`, qX + qrSize / 2, qrY + qrSize + 4.5 * scale);
     }
   }
 }
