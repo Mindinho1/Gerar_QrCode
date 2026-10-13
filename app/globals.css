@@ -3,20 +3,29 @@
 @tailwind utilities;
 
 /* =====================================================================
-   SISTEMA DE DESIGN & PALETA DE CORES (60% - 30% - 10%)
+   SISTEMA DE DESIGN & PALETA DE CORES (60% - 30% - 10% + 1%)
    Primary (60%): Blanco #FCFFFF
    Secondary (30%): Azul Tiffany #99E1D9 (Hover: #7FD1C8)
    Tertiary (10%): Gunmetal #202C39 (Hover: #18222D)
+   Bordas & Contornos (1%): #E2E8F0 (Sutil) & #99E1D9/30 (Accent Focus)
    Destaque: Dourado #F59E0B
    ===================================================================== */
 
 :root {
-  /* Paleta Principal solicitada */
+  /* Paleta Principal solicitada (Regra 60-30-10 + 1% Bordas) */
   --primary: #FCFFFF;
   --secondary: #99E1D9;
   --secondary-hover: #7FD1C8;
   --tertiary: #202C39;
   --tertiary-hover: #18222D;
+
+  /* Bordas e Contornos Estruturais (1% da distribuição visual) */
+  --border-ratio: 1%;
+  --border-width: 1px;
+  --border: #E2E8F0;
+  --border-subtle: rgba(226, 232, 240, 0.85);
+  --border-focus: rgba(153, 225, 217, 0.65);
+  --border-gunmetal: rgba(32, 44, 57, 0.12);
 
   /* Cores Auxiliares */
   --gold: #F59E0B;

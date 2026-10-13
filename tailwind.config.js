@@ -14,7 +14,11 @@ module.exports = {
         tertiary: { DEFAULT: '#202C39', hover: '#18222D' },
         gold: '#F59E0B',
         surface: '#F8FAFC',
-        border: '#E2E8F0',
+        border: {
+          DEFAULT: '#E2E8F0',
+          subtle: 'rgba(226, 232, 240, 0.85)',
+          focus: 'rgba(153, 225, 217, 0.65)',
+        },
         muted: '#475569',
         success: '#16A34A',
         error: '#DC2626',
