@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
           })}
         </nav>
 
-        {/* CTA Button */}
+        {/* CTA Button
         <div className="hidden md:flex items-center gap-3">
           <Link href="/cartoes">
             <Button
@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
               Criar agora
             </Button>
           </Link>
-        </div>
+        </div> */}
 
         {/* Mobile menu button */}
         <div className="flex md:hidden items-center gap-2">

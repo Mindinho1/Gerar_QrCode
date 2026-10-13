@@ -24,9 +24,7 @@ export default function SobrePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Header */}
           <div className="text-center space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0f766e] bg-[#99E1D9]/25 px-3 py-1 rounded-full">
-              Sobre Nós
-            </span>
+        
             <h1 className="text-3xl sm:text-5xl font-extrabold text-[#202C39] tracking-tight">
               A Ferramenta Definitiva para QR Codes e Cartões Profissionais
             </h1>

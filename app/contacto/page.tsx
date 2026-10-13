@@ -57,9 +57,7 @@ export default function ContactoPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {/* Page Title */}
           <div className="text-center space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0f766e] bg-[#99E1D9]/25 px-3 py-1 rounded-full">
-              Contacto & Suporte
-            </span>
+            
             <h1 className="text-3xl sm:text-5xl font-extrabold text-[#202C39] tracking-tight">
               Como podemos ajudar?
             </h1>

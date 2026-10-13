@@ -104,10 +104,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
               {/* Left Column: Headline, Subtitle & Buttons */}
               <div className="lg:col-span-6 space-y-6 text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#99E1D9]/25 border border-[#99E1D9] text-[#202C39] text-xs font-bold tracking-wide">
-                  <Sparkles size={14} className="text-[#0f766e]" />
-                  <span>Estúdio de Criação & Impressão Gráfica</span>
-                </div>
+                
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#202C39] tracking-tight leading-[1.12]">
                   Crie QR codes e cartões personalizados{' '}

@@ -137,10 +137,7 @@ export default function QRCodePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Header Title */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#99E1D9]/25 text-[#0f766e] text-xs font-bold mb-2">
-              <QrCode size={14} />
-              <span>Gerador Estático e Gratuito</span>
-            </div>
+            
             <h1 className="text-3xl sm:text-4xl font-extrabold text-[#202C39] tracking-tight">
               Gerador de QR Code Avulso
             </h1>

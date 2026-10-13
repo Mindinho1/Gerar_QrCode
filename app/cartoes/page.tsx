@@ -15,10 +15,7 @@ export default function CartoesGalleryPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Page Header */}
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#99E1D9]/25 text-[#0f766e] text-xs font-bold">
-              <CreditCard size={14} />
-              <span>Colecção Pronta para Gráfica</span>
-            </div>
+            
             <h1 className="text-3xl sm:text-5xl font-extrabold text-[#202C39] tracking-tight">
               Galeria de Modelos de Cartão
             </h1>
